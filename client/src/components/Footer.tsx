@@ -3,6 +3,28 @@ import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const handleInstagramClick = (e: React.MouseEvent) => {
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      e.preventDefault();
+      // Tenta abrir direto no perfil via deep link
+      window.location.href = 'instagram://user?username=samuelcarvalho.imagens';
+      // Fallback caso não tenha o app
+      setTimeout(() => {
+        window.open('https://www.instagram.com/samuelcarvalho.imagens/', '_blank');
+      }, 1000);
+    }
+  };
+
+  const handleFacebookClick = (e: React.MouseEvent) => {
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      e.preventDefault();
+      window.location.href = 'fb://page/SamuelCarvalhoImagens';
+      setTimeout(() => {
+        window.open('https://www.facebook.com/SamuelCarvalhoImagens', '_blank');
+      }, 500);
+    }
+  };
+
   return (
     <footer className="bg-black border-t border-gray-800">
       <div className="container py-16 md:py-20">
@@ -63,21 +85,24 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-6">
-            {[
-              { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/samuelcarvalho.imagens/' },
-              { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/SamuelCarvalhoImagens' },
-            ].map(({ icon: Icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
-              >
-                <Icon size={20} />
-              </a>
-            ))}
+            <a
+              href="https://www.instagram.com/samuelcarvalho.imagens/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
+            >
+              <Instagram size={20} />
+            </a>
+            <a
+              href="https://www.facebook.com/SamuelCarvalhoImagens"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
+            >
+              <Facebook size={20} />
+            </a>
           </div>
         </div>
       </div>
