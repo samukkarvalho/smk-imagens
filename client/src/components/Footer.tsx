@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black border-t border-gray-800">
+    <footer id="contato" className="bg-black border-t border-gray-800">
       <div className="container py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
@@ -68,7 +68,7 @@ export default function Footer() {
 
           <div>
             <h4 className="text-lg font-montserrat font-bold text-white mb-6">
-              Contato
+              Contatos
             </h4>
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-gray-400 font-sans text-sm hover:text-blue-500 transition-colors">
@@ -79,10 +79,6 @@ export default function Footer() {
                 <Mail size={18} className="text-blue-500 flex-shrink-0" />
                 <span>saasouzaplay@gmail.com</span>
               </li>
-              <li className="flex items-center gap-3 text-gray-400 font-sans text-sm hover:text-blue-500 transition-colors">
-                <MapPin size={18} className="text-blue-500 flex-shrink-0" />
-                <span>Portugal</span>
-              </li>
             </ul>
           </div>
         </div>
@@ -90,8 +86,9 @@ export default function Footer() {
         <div className="border-t border-gray-800 my-8"></div>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-          <p className="text-gray-500 font-sans text-sm text-center">
-            © {currentYear} Fotografia & Filme. Todos os direitos reservados.
+          <p className="text-gray-500 font-sans text-sm text-center flex items-center gap-2">
+            <MapPin size={16} className="text-blue-500" />
+            Portugal | © {currentYear} Fotografia & Filme. Todos os direitos reservados.
           </p>
         </div>
       </div>
