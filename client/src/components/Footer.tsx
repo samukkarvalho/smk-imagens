@@ -6,7 +6,7 @@
  * - Links rápidos de navegação
  */
 
-import { Mail, Phone, MapPin, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -34,7 +34,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {['Portfólio', 'Sobre', 'Contato'].map((link) => (
                 <li key={link}>
-                  <a
+                  
                     href={`#${link.toLowerCase()}`}
                     className="text-gray-400 hover:text-blue-500 transition-colors duration-300 font-sans text-sm"
                   >
@@ -80,13 +80,14 @@ export default function Footer() {
           {/* Social Links */}
           <div className="flex items-center gap-6">
             {[
-              { icon: Instagram, label: 'Instagram', href: '#' },
-              { icon: Youtube, label: 'YouTube', href: '#' },
-              { icon: Linkedin, label: 'LinkedIn', href: '#' },
+              { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/samuelcarvalho.imagens/' },
+              { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/SamuelCarvalhoImagens' },
             ].map(({ icon: Icon, label, href }) => (
-              <a
+              
                 key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
               >
