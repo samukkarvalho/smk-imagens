@@ -7,26 +7,25 @@ const projectCategories = {
       id: 'cat-1',
       name: 'Universo Paralelo Portugal',
       description: 'Evento especial em Portugal',
-      images: [
-        { id: '1', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
-        { id: '2', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 2' },
+      items: [
+        { id: '1', type: 'image', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
+        { id: '2', type: 'image', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 2' },
       ]
     },
   ],
   videos: [
     {
       id: 'cat-3',
-      name: 'Documentário Portugal',
-      description: 'Documentário sobre Portugal',
-      images: [
-        { id: '6', url: 'https://i.imgur.com/njyiG1Y.jpg', title: 'Vídeo 1' },
-        { id: '7', url: 'https://i.imgur.com/njyiG1Y.jpg', title: 'Vídeo 2' },
+      name: 'Eventos de Eletrônica',
+      description: 'Cobertura de eventos de música eletrônica',
+      items: [
+        { id: '1', type: 'video', url: 'https://www.youtube.com/embed/QL1B8MEJFHU', title: 'Evento 1' },
       ]
     },
   ]
 };
 
-export default function Portfolio( ) {
+export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedType, setSelectedType] = useState('fotografia');
 
@@ -80,14 +79,23 @@ export default function Portfolio( ) {
                 className="bg-gray-900 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-800 transition-all group"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={category.images[0].url}
-                    alt={category.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                  />
+                  {category.items[0].type === 'image' ? (
+                    <img
+                      src={category.items[0].url}
+                      alt={category.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                    />
+                  ) : (
+                    <iframe
+                      src={category.items[0].url}
+                      className="w-full h-full object-cover pointer-events-none"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  )}
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all flex items-center justify-center">
                     <span className="text-white font-montserrat font-bold text-center px-4">
-                      {category.images.length} {selectedType === 'fotografia' ? 'Fotos' : 'Vídeos'}
+                      {category.items.length} {selectedType === 'fotografia' ? 'Fotos' : 'Vídeos'}
                     </span>
                   </div>
                 </div>
@@ -101,7 +109,7 @@ export default function Portfolio( ) {
             ))}
           </div>
         ) : (
-          /* Mostrar imagens da categoria selecionada */
+          /* Mostrar itens da categoria selecionada */
           <div>
             {/* Botão voltar */}
             <button
@@ -116,24 +124,30 @@ export default function Portfolio( ) {
               {currentCategories.find(c => c.id === selectedCategory)?.name}
             </h3>
 
-            {/* Grid de imagens */}
+            {/* Grid de imagens/vídeos */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {currentCategories
                 .find(c => c.id === selectedCategory)
-                ?.images.map((image) => (
+                ?.items.map((item) => (
                   <div
-                    key={image.id}
+                    key={item.id}
                     className="bg-gray-900 rounded-lg overflow-hidden group"
                   >
                     <div className="relative h-64 overflow-hidden">
-                      <img
-                        src={image.url}
-                        alt={image.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                      />
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <span className="text-white font-montserrat">Ver</span>
-                      </div>
+                      {item.type === 'image' ? (
+                        <img
+                          src={item.url}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                        />
+                      ) : (
+                        <iframe
+                          src={item.url}
+                          className="w-full h-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      )}
                     </div>
                   </div>
                 ))}
