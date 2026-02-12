@@ -5,12 +5,28 @@ import { X } from 'lucide-react';
 const projectCategories = {
   fotografia: [
     {
-      id: 'cat-1',
-      name: 'Universo Paralelo Portugal',
-      description: 'Evento especial em Portugal',
+      id: 'festa-1',
+      name: 'Festa 1',
+      description: 'Cobertura fotográfica da Festa 1',
       items: [
-        { id: '1', type: 'image', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
-        { id: '2', type: 'image', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 2' },
+        { id: 'f1-1', type: 'image', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
+        { id: 'f1-2', type: 'image', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 2' },
+      ]
+    },
+    {
+      id: 'festa-2',
+      name: 'Festa 2',
+      description: 'Cobertura fotográfica da Festa 2',
+      items: [
+        { id: 'f2-1', type: 'image', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
+      ]
+    },
+    {
+      id: 'festa-5',
+      name: 'Festa 5',
+      description: 'Cobertura fotográfica da Festa 5',
+      items: [
+        { id: 'f5-1', type: 'image', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 1' },
       ]
     },
   ],
