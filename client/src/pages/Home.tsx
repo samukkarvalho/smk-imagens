@@ -17,7 +17,7 @@ import AnimatedBackground from '@/components/AnimatedBackground';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className="min-h-screen bg-black text-white relative" style={{ position: 'relative', zIndex: 0 }}>
       {/* Background 3D Animado */}
       <AnimatedBackground />
       
