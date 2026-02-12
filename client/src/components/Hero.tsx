@@ -11,18 +11,18 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Conteúdo Principal */}
-      <div className="container relative z-10 text-center px-4">
-        {/* Título Principal - Alinhado com Header */}
+      <div className="container relative z-10 text-center px-4 mx-auto">
+        {/* Título Principal - Centralizado */}
         <div
           className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-7xl md:text-9xl lg:text-[11rem] font-black mb-6 leading-none tracking-tight text-center">
-            <span className="block text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-none tracking-tight flex flex-col items-center justify-center">
+            <span className="text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               SMK
             </span>
-            <span className="block text-cyan-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <span className="text-cyan-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               IMAGENS
             </span>
           </h1>
