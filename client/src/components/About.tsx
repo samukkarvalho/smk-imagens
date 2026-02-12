@@ -1,8 +1,10 @@
 import { Camera, Video, Award, Users } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import ContactForm from './ContactForm';
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -109,14 +111,17 @@ export default function About() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <a
-            href="#contato"
+          <button
+            onClick={() => setIsFormOpen(true)}
             className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-montserrat font-bold rounded-sm hover:shadow-lg hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
           >
             Vamos Trabalhar Juntos
-          </a>
+          </button>
         </div>
       </div>
+
+      {/* Modal de Formulário */}
+      <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   );
 }
