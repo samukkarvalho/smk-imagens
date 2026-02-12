@@ -26,14 +26,10 @@ export default function Header() {
           isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-blue-500/20' : 'bg-transparent'
         }`}
       >
-        <div className="px-3">
-          <div className="flex items-center justify-between h-14">
-            {/* Logo Pequeno no Cantinho */}
-            <a href="#" className="flex items-center">
-              <h1 className="text-base md:text-lg font-black tracking-tight" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                <span className="text-white">SMK</span> <span className="text-cyan-400">IMAGENS</span>
-              </h1>
-            </a>
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Espaço vazio - sem logo */}
+            <div></div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">

@@ -12,17 +12,15 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Conteúdo Principal */}
       <div className="container relative z-10 text-center px-4 mx-auto">
-        {/* Título Principal - Centralizado */}
+        {/* Título Principal */}
         <div
           className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-none tracking-tight flex flex-col items-center justify-center">
-            <span className="text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-              SMK
-            </span>
-            <span className="text-cyan-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-bold text-white mb-6 leading-tight">
+            <span className="block">SMK</span>
+            <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
               IMAGENS
             </span>
           </h1>
