@@ -85,10 +85,15 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 my-8"></div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-          <p className="text-gray-500 font-sans text-sm text-center flex items-center gap-2">
-            <MapPin size={16} className="text-blue-500" />
-            Portugal | © {currentYear} Fotografia & Filme. Todos os direitos reservados.
+        <div className="flex flex-col items-center justify-center gap-3 text-center">
+          <p className="text-gray-500 font-sans text-xs md:text-sm flex items-center gap-2 flex-wrap justify-center">
+            <span className="flex items-center gap-1">
+              <MapPin size={14} className="text-blue-500 flex-shrink-0" />
+              Portugal
+            </span>
+            <span className="hidden md:inline">|</span>
+            <span>© {currentYear} Fotografia & Filme.</span>
+            <span>Todos os direitos reservados.</span>
           </p>
         </div>
       </div>
