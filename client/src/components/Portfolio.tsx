@@ -8,9 +8,8 @@ const projectCategories = {
       name: 'Universo Paralelo Portugal',
       description: 'Evento especial em Portugal',
       images: [
-        { id: '1', url: 'https://imgur.com/jHuZj8U', title: 'Foto 1' },
-        { id: '2', url: 'https://imgur.com/WlsE9L9', title: 'Foto 2' },
-        { id: '3', url: 'https://imgur.com/a/MMtdyHq', title: 'Foto 3' },
+        { id: '1', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
+        { id: '2', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 2' },
       ]
     },
   ],
@@ -20,8 +19,8 @@ const projectCategories = {
       name: 'Documentário Portugal',
       description: 'Documentário sobre Portugal',
       images: [
-        { id: '6', url: 'https://imgur.com/njyiG1Y.jpg', title: 'Vídeo 1' },
-        { id: '7', url: 'https://imgur.com/njyiG1Y.jpg', title: 'Vídeo 2' },
+        { id: '6', url: 'https://i.imgur.com/njyiG1Y.jpg', title: 'Vídeo 1' },
+        { id: '7', url: 'https://i.imgur.com/njyiG1Y.jpg', title: 'Vídeo 2' },
       ]
     },
   ]
