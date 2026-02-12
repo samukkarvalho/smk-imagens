@@ -33,7 +33,7 @@ const projectCategories = {
     },
     {
       id: 'music-day',
-      name: 'Music Day',
+      name: 'Music Day 2021',
       description: 'Cobertura fotográfica Music Day',
       items: [
         { id: 'f2-1', type: 'image', url: 'https://i.imgur.com/0rkL9YG.jpg', title: 'Foto 1' },
