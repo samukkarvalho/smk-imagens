@@ -11,7 +11,7 @@ const projectCategories = {
       items: [
         { id: 'f1-1', type: 'image', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
         { id: 'f1-2', type: 'image', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 2' },
-        { id: 'f1-3', type: 'image', url: 'https://i.imgur.com/Jheb1VN.jpg', title: 'Foto 3' },
+        { id: 'f1-3', type: 'image', url: 'https://i.imgur.com/VZuvG1F.jpg', title: 'Foto 3' },
         { id: 'f1-4', type: 'image', url: 'https://i.imgur.com/SOO30RG.jpg', title: 'Foto 4' },
         { id: 'f1-5', type: 'image', url: 'https://i.imgur.com/kdnn4xY.jpg', title: 'Foto 5' },
       ]
