@@ -1,11 +1,3 @@
-/**
- * Footer Component
- * Design: Minimalismo Cinematográfico
- * - Fundo preto com bordas azuis
- * - Informações de contato e redes sociais
- * - Links rápidos de navegação
- */
-
 import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 
 export default function Footer() {
@@ -14,9 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-gray-800">
       <div className="container py-16 md:py-20">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
           <div>
             <h3 className="text-xl font-montserrat font-bold text-white mb-4">
               SMK IMAGENS
@@ -26,7 +16,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-lg font-montserrat font-bold text-white mb-6">
               Links Rápidos
@@ -45,7 +34,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h4 className="text-lg font-montserrat font-bold text-white mb-6">
               Contato
@@ -67,17 +55,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="border-t border-gray-800 my-8"></div>
 
-        {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Copyright */}
           <p className="text-gray-500 font-sans text-sm text-center md:text-left">
             © {currentYear} Fotografia & Filme. Todos os direitos reservados.
           </p>
 
-          {/* Social Links */}
           <div className="flex items-center gap-6">
             {[
               { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/samuelcarvalho.imagens/' },
