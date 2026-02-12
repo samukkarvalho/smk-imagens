@@ -23,7 +23,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {['Portfólio', 'Sobre', 'Contato'].map((link) => (
                 <li key={link}>
-                  
+                  <a
                     href={`#${link.toLowerCase()}`}
                     className="text-gray-400 hover:text-blue-500 transition-colors duration-300 font-sans text-sm"
                   >
@@ -67,7 +67,7 @@ export default function Footer() {
               { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/samuelcarvalho.imagens/' },
               { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/SamuelCarvalhoImagens' },
             ].map(({ icon: Icon, label, href }) => (
-              
+              <a
                 key={label}
                 href={href}
                 target="_blank"
