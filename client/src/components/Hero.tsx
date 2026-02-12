@@ -40,26 +40,23 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Botões de ação com delay maior */}
+        {/* Foto do fotógrafo com moldura neon */}
         <div
           className={`transition-all duration-1000 delay-500 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="#portfolio"
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-montserrat font-bold rounded-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-105"
-            >
-              <span className="relative z-10">Ver Portfólio</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </a>
-            <a
-              href="#contato"
-              className="px-8 py-4 border-2 border-blue-500 text-blue-400 font-montserrat font-bold rounded-sm hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
-            >
-              Entre em Contato
-            </a>
+          <div className="relative inline-block mb-12">
+            {/* Moldura neon animada */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 rounded-lg blur-sm animate-pulse"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg"></div>
+            
+            {/* Foto */}
+            <img 
+              src="https://i.imgur.com/6WCx1VT.jpg"
+              alt="Fotógrafo em ação"
+              className="relative rounded-lg w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl"
+            />
           </div>
         </div>
 
