@@ -12,13 +12,13 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Conteúdo Principal */}
       <div className="container relative z-10 text-center px-4">
-        {/* Título Principal - Fonte Quadrada Profissional */}
+        {/* Título Principal - Alinhado com Header */}
         <div
           className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-7xl md:text-9xl lg:text-[12rem] font-black mb-6 leading-none tracking-tight">
+          <h1 className="text-7xl md:text-9xl lg:text-[11rem] font-black mb-6 leading-none tracking-tight text-center">
             <span className="block text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               SMK
             </span>
