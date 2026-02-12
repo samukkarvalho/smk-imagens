@@ -12,18 +12,73 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Conteúdo Principal */}
       <div className="container relative z-10 text-center px-4">
-        {/* Título Principal com animação */}
+        {/* Título Principal com animação NEON RAVE */}
         <div
           className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-bold text-white mb-6 leading-tight">
-            <span className="block">SMK</span>
-            <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-tight tracking-wider">
+            <span 
+              className="block text-white"
+              style={{
+                fontFamily: 'Impact, "Arial Black", sans-serif',
+                textShadow: '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00f3ff, 0 0 40px #00f3ff, 0 0 50px #00f3ff',
+                animation: 'neonPulse 1.5s ease-in-out infinite alternate'
+              }}
+            >
+              SMK
+            </span>
+            <span 
+              className="block"
+              style={{
+                fontFamily: 'Impact, "Arial Black", sans-serif',
+                background: 'linear-gradient(90deg, #00f3ff, #0066ff, #ff00ff, #00f3ff)',
+                backgroundSize: '200% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textShadow: '0 0 20px #00f3ff, 0 0 30px #0066ff, 0 0 40px #ff00ff, 0 0 50px #00f3ff, 0 0 60px #0066ff',
+                animation: 'neonGlow 2s linear infinite, gradientShift 3s ease infinite',
+                filter: 'brightness(1.2)'
+              }}
+            >
               IMAGENS
             </span>
           </h1>
+          
+          {/* CSS animations */}
+          <style>{`
+            @keyframes neonPulse {
+              from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00f3ff, 0 0 40px #00f3ff;
+              }
+              to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #00f3ff, 0 0 40px #00f3ff, 0 0 50px #00f3ff, 0 0 60px #00f3ff;
+              }
+            }
+            
+            @keyframes neonGlow {
+              0%, 100% {
+                filter: brightness(1.2) drop-shadow(0 0 20px #00f3ff);
+              }
+              50% {
+                filter: brightness(1.5) drop-shadow(0 0 30px #ff00ff);
+              }
+            }
+            
+            @keyframes gradientShift {
+              0% {
+                background-position: 0% center;
+              }
+              50% {
+                background-position: 100% center;
+              }
+              100% {
+                background-position: 0% center;
+              }
+            }
+          `}</style>
         </div>
 
         {/* Subtítulo com delay */}

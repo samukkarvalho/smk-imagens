@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { X } from 'lucide-react';
 
 // Dados dos projetos organizados por categoria
 const projectCategories = {
@@ -28,11 +29,22 @@ const projectCategories = {
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedType, setSelectedType] = useState('fotografia');
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const currentCategories = projectCategories[selectedType];
 
+  const openLightbox = (imageUrl: string) => {
+    setLightboxImage(imageUrl);
+    document.body.style.overflow = 'hidden'; // Previne scroll
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    document.body.style.overflow = 'auto'; // Restaura scroll
+  };
+
   return (
-    <section id="portfolio" className="w-full bg-black py-20">
+    <section id="portfolio" className="w-full bg-black py-20 relative">
       <div className="container">
         {/* Título */}
         <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-white mb-12">
@@ -131,15 +143,21 @@ export default function Portfolio() {
                 ?.items.map((item) => (
                   <div
                     key={item.id}
-                    className="bg-gray-900 rounded-lg overflow-hidden group"
+                    className="bg-gray-900 rounded-lg overflow-hidden group cursor-pointer"
+                    onClick={() => item.type === 'image' && openLightbox(item.url)}
                   >
                     <div className="relative h-64 overflow-hidden">
                       {item.type === 'image' ? (
-                        <img
-                          src={item.url}
-                          alt={item.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                        />
+                        <>
+                          <img
+                            src={item.url}
+                            alt={item.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                          />
+                          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <span className="text-white font-montserrat text-lg">🔍 Ver Imagem</span>
+                          </div>
+                        </>
                       ) : (
                         <iframe
                           src={item.url}
@@ -155,6 +173,30 @@ export default function Portfolio() {
           </div>
         )}
       </div>
+
+      {/* LIGHTBOX Modal */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+          onClick={closeLightbox}
+        >
+          {/* Botão Fechar */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 text-white hover:text-cyan-400 transition-colors p-2 bg-black/50 rounded-full"
+          >
+            <X size={32} />
+          </button>
+
+          {/* Imagem Maximizada */}
+          <img
+            src={lightboxImage}
+            alt="Imagem ampliada"
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()} // Previne fechar ao clicar na imagem
+          />
+        </div>
+      )}
     </section>
   );
 }
