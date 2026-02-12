@@ -1,121 +1,120 @@
-/**
- * About Section Component
- * Design: Minimalismo Cinematográfico
- * - Layout assimétrico com imagem e texto
- * - Tipografia clara com hierarquia visual
- * - Padrão geométrico de fundo
- */
-
-import { Camera, Film, Zap } from 'lucide-react';
-
-const ABSTRACT_PATTERN = 'https://private-us-east-1.manuscdn.com/sessionFile/IIFVKZIMJF5RqEjVRKTr60/sandbox/CiIeAhFlKIKWpPQ8Tb2ZQx-img-2_1770637605000_na1fn_YWJzdHJhY3QtcGF0dGVybi1ibHVlLWJsYWNr.png';
-
-interface Service {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-const services: Service[] = [
-  {
-    icon: <Camera size={32} className="text-blue-500" />,
-    title: 'Fotografia Profissional',
-    description: 'Sessões de fotografia com equipamento de ponta e tratamento profissional de imagens',
-  },
-  {
-    icon: <Film size={32} className="text-blue-500" />,
-    title: 'Produção de Vídeo',
-    description: 'Filmagem cinematográfica com color grading profissional e pós-produção de qualidade',
-  },
-  {
-    icon: <Zap size={32} className="text-blue-500" />,
-    title: 'Consultoria Criativa',
-    description: 'Orientação e planejamento de projetos visuais desde a concepção até a entrega final',
-  },
-];
+import { Camera, Video, Award, Users } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function About() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const features = [
+    {
+      icon: Camera,
+      title: 'Fotografia Profissional',
+      description: 'Capturamos a essência de cada momento com equipamento de ponta e olhar artístico.',
+    },
+    {
+      icon: Video,
+      title: 'Produção Audiovisual',
+      description: 'Vídeos cinematográficos que contam histórias e conectam emocionalmente.',
+    },
+    {
+      icon: Award,
+      title: 'Qualidade Garantida',
+      description: 'Comprometimento com excelência em cada projeto, do planejamento à entrega.',
+    },
+    {
+      icon: Users,
+      title: 'Foco no Cliente',
+      description: 'Trabalhamos lado a lado para transformar sua visão em realidade visual.',
+    },
+  ];
+
   return (
-    <section id="about" className="py-20 md:py-32 bg-black relative overflow-hidden">
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `url('${ABSTRACT_PATTERN}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
+    <section
+      ref={sectionRef}
+      id="sobre"
+      className="relative py-20 md:py-32 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden"
+    >
+      {/* Elementos decorativos de fundo */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
 
       <div className="container relative z-10">
-        {/* Header */}
-        <div className="mb-16 md:mb-24">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-            Sobre Mim
+        {/* Título da seção */}
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-white mb-6">
+            Sobre <span className="text-blue-400">Nós</span>
           </h2>
-          <div className="w-16 h-1 bg-blue-600"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 mx-auto mb-8" />
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-sans">
+            Somos apaixonados por criar memórias visuais que transcendem o tempo. 
+            Com anos de experiência e dedicação, transformamos momentos em arte.
+          </p>
         </div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center mb-20">
-          {/* Text */}
-          <div>
-            <p className="text-gray-300 font-sans text-lg leading-relaxed mb-6">
-              Sou um fotógrafo e filmmaker apaixonado por capturar momentos únicos e transformá-los em histórias visuais impactantes. Com mais de uma década de experiência, desenvolvi uma abordagem cinematográfica que combina técnica profissional com criatividade sem limites.
-            </p>
-            <p className="text-gray-400 font-sans text-base leading-relaxed mb-8">
-              Cada projeto é uma oportunidade de criar algo extraordinário. Trabalho com clientes que compartilham minha visão de excelência e inovação, entregando resultados que superam expectativas e deixam marcas duradouras.
-            </p>
-            <div className="flex gap-4">
-              <div>
-                <p className="text-3xl font-display font-bold text-blue-500">500+</p>
-                <p className="text-gray-400 font-sans text-sm">Projetos Completos</p>
-              </div>
-              <div>
-                <p className="text-3xl font-display font-bold text-blue-500">10+</p>
-                <p className="text-gray-400 font-sans text-sm">Anos de Experiência</p>
-              </div>
-              <div>
-                <p className="text-3xl font-display font-bold text-blue-500">100%</p>
-                <p className="text-gray-400 font-sans text-sm">Clientes Satisfeitos</p>
-              </div>
-            </div>
-          </div>
+        {/* Grid de features */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
+            <div
+              key={feature.title}
+              className={`group relative bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 hover:border-blue-500/50 transition-all duration-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 rounded-lg transition-all duration-500" />
 
-          {/* Image */}
-          <div className="relative h-96 md:h-full min-h-96 rounded-lg overflow-hidden">
-            <img
-              src={ABSTRACT_PATTERN}
-              alt="Studio Setup"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          </div>
-        </div>
-
-        {/* Services */}
-        <div className="border-t border-gray-800 pt-20">
-          <h3 className="text-3xl font-display font-bold text-white mb-12">
-            O Que Ofereço
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-gray-900/50 border border-gray-800 rounded-lg p-8 hover:border-blue-600 transition-colors duration-300 group"
-              >
-                <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
+              <div className="relative z-10">
+                {/* Ícone */}
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <feature.icon className="text-white" size={28} />
                 </div>
-                <h4 className="text-xl font-display font-bold text-white mb-3">
-                  {service.title}
-                </h4>
+
+                {/* Conteúdo */}
+                <h3 className="text-xl font-montserrat font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                  {feature.title}
+                </h3>
                 <p className="text-gray-400 font-sans text-sm leading-relaxed">
-                  {service.description}
+                  {feature.description}
                 </p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Call to action */}
+        <div
+          className={`text-center mt-16 transition-all duration-1000 delay-500 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <a
+            href="#contato"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-montserrat font-bold rounded-sm hover:shadow-lg hover:shadow-blue-500/50 hover:scale-105 transition-all duration-300"
+          >
+            Vamos Trabalhar Juntos
+          </a>
         </div>
       </div>
     </section>
