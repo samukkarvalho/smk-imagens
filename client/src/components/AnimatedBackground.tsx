@@ -7,7 +7,7 @@ export default function AnimatedBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -248,18 +248,6 @@ export default function AnimatedBackground() {
           ctx.stroke();
           ctx.shadowBlur = 0;
         }
-      }
-
-      // ===== GLITCH EFFECT SUTIL (GAMER AESTHETIC) =====
-      if (Math.random() > 0.97) {
-        const glitchY = Math.random() * canvas.height;
-        const glitchHeight = 3 + Math.random() * 5;
-        const glitchOffset = (Math.random() - 0.5) * 10;
-        
-        ctx.save();
-        const imageData = ctx.getImageData(0, glitchY, canvas.width, glitchHeight);
-        ctx.putImageData(imageData, glitchOffset, glitchY);
-        ctx.restore();
       }
 
       // ===== SCANLINES SUTIS (CRT EFFECT) =====
