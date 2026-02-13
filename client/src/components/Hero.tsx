@@ -120,7 +120,6 @@ export default function Hero() {
         <ArrowDown size={32} aria-hidden="true" />
       </a>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60 pointer-events-none" aria-hidden="true" />
     </section>
   );
 }
