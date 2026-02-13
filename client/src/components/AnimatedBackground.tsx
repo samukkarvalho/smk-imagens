@@ -29,7 +29,7 @@ export default function AnimatedBackground() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // PARTÍCULAS - REDUZIDO de 80 para 40
+    // PARTÍCULAS FLUTUANTES
     interface Particle {
       x: number;
       y: number;
@@ -42,25 +42,20 @@ export default function AnimatedBackground() {
     }
 
     const particles: Particle[] = [];
-    const particleCount = 40; // REDUZIDO
+    const particleCount = 50; // Aumentado para compensar a remoção do grid
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1,
+        size: Math.random() * 4 + 1,
         speedX: (Math.random() - 0.5) * 0.5,
         speedY: (Math.random() - 0.5) * 0.5,
         hue: Math.random() * 60 + 220,
-        opacity: Math.random() * 0.5 + 0.3,
+        opacity: Math.random() * 0.6 + 0.3,
         pulsePhase: Math.random() * Math.PI * 2
       });
     }
-
-    // Grid 3D - OTIMIZADO
-    const gridSize = 60;
-    const gridDepth = 12; // REDUZIDO de 15
-    const perspective = 500;
 
     const animate = () => {
       time += 0.015;
@@ -76,64 +71,9 @@ export default function AnimatedBackground() {
       ctx.fillStyle = bgGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Grid 3D - SEM SOMBRAS (grande economia)
-      ctx.save();
-      ctx.translate(canvas.width / 2, canvas.height * 0.75);
+      // REMOVIDO: Grid 3D completo
 
-      const parallaxX = (mouseX - canvas.width / 2) * 0.03;
-      const parallaxY = (mouseY - canvas.height / 2) * 0.015;
-
-      // Linhas horizontais
-      for (let z = 0; z < gridDepth; z++) {
-        const zPos = z * gridSize - (time * 60) % gridSize;
-        const scale = perspective / (perspective + zPos);
-        
-        if (scale > 0 && scale < 2) {
-          const y = zPos * scale + parallaxY;
-          const width = canvas.width * scale * 1.2;
-          const opacity = Math.max(0, Math.min(0.5, scale - 0.15));
-          const wave = Math.sin(time * 1.5 + z * 0.4) * 4;
-          const colorMix = (z / gridDepth) + Math.sin(time * 0.5) * 0.3;
-          const hue = 220 + colorMix * 60;
-          
-          ctx.beginPath();
-          ctx.moveTo(-width / 2 + parallaxX, y + wave);
-          ctx.lineTo(width / 2 + parallaxX, y + wave);
-          ctx.strokeStyle = `hsla(${hue}, 100%, 65%, ${opacity})`;
-          ctx.lineWidth = scale * 2.5;
-          ctx.stroke(); // SEM shadowBlur
-        }
-      }
-
-      // Linhas verticais - REDUZIDO
-      for (let x = -8; x <= 8; x += 2) { // MENOS LINHAS (era -12 a 12)
-        ctx.beginPath();
-        for (let z = 0; z < gridDepth; z++) {
-          const zPos = z * gridSize - (time * 60) % gridSize;
-          const scale = perspective / (perspective + zPos);
-          
-          if (scale > 0 && scale < 2) {
-            const xPos = x * gridSize * scale + parallaxX;
-            const y = zPos * scale + parallaxY;
-            const wave = Math.sin(time * 1.5 + z * 0.4 + x * 0.3) * 4;
-            
-            if (z === 0) {
-              ctx.moveTo(xPos, y + wave);
-            } else {
-              ctx.lineTo(xPos, y + wave);
-            }
-          }
-        }
-        
-        const hue = 240 + x * 3 + time * 10;
-        ctx.strokeStyle = `hsla(${hue}, 100%, 60%, 0.25)`;
-        ctx.lineWidth = 1.8;
-        ctx.stroke(); // SEM shadowBlur
-      }
-
-      ctx.restore();
-
-      // Partículas - SEM SOMBRAS
+      // Partículas flutuantes
       particles.forEach(p => {
         p.x += p.speedX;
         p.y += p.speedY;
@@ -148,19 +88,20 @@ export default function AnimatedBackground() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * pulse, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${p.hue}, 100%, 70%, ${p.opacity * pulse})`;
-        ctx.fill(); // SEM shadowBlur
+        ctx.fill();
       });
 
-      // Ondas - REDUZIDO de 6 para 3
-      const waveCount = 3;
+      // ONDAS EM TODA A PÁGINA (aumentadas de 3 para 8)
+      const waveCount = 8;
       for (let i = 0; i < waveCount; i++) {
-        const waveY = canvas.height * (0.2 + i * 0.2) + Math.sin(time * 1.2 + i) * 40;
-        const waveOpacity = 0.12 + Math.sin(time * 2.5 + i * 0.7) * 0.08;
+        // Distribuir ondas uniformemente pela altura
+        const waveY = (canvas.height / (waveCount + 1)) * (i + 1) + Math.sin(time * 1.2 + i) * 50;
+        const waveOpacity = 0.15 + Math.sin(time * 2.5 + i * 0.7) * 0.1;
         
         ctx.beginPath();
-        for (let x = 0; x < canvas.width; x += 8) { // MENOS PONTOS (era 4)
-          const amplitude = 25 + Math.sin(time + i * 0.5) * 15;
-          const frequency = 0.008 + i * 0.002;
+        for (let x = 0; x < canvas.width; x += 6) {
+          const amplitude = 30 + Math.sin(time + i * 0.5) * 20;
+          const frequency = 0.006 + i * 0.001;
           const y = waveY + Math.sin(x * frequency + time * 3 + i * 0.8) * amplitude;
           
           if (x === 0) {
@@ -170,15 +111,57 @@ export default function AnimatedBackground() {
           }
         }
         
-        const hue = 220 + i * 15 + Math.sin(time) * 20;
+        const hue = 220 + i * 8 + Math.sin(time) * 20;
         ctx.strokeStyle = `hsla(${hue}, 100%, 65%, ${waveOpacity})`;
         ctx.lineWidth = 2.5;
-        ctx.stroke(); // SEM shadowBlur
+        ctx.stroke();
       }
 
-      // REMOVIDO: Feixes de luz (economia significativa)
-      // REMOVIDO: Pulsos radiais (economia significativa)
-      // REMOVIDO: Scanlines (não adiciona muito valor)
+      // ONDAS VERTICAIS (novo - para criar efeito de grade fluida)
+      const verticalWaveCount = 5;
+      for (let i = 0; i < verticalWaveCount; i++) {
+        const waveX = (canvas.width / (verticalWaveCount + 1)) * (i + 1) + Math.sin(time * 0.8 + i) * 40;
+        const waveOpacity = 0.08 + Math.sin(time * 2 + i * 0.5) * 0.05;
+        
+        ctx.beginPath();
+        for (let y = 0; y < canvas.height; y += 6) {
+          const amplitude = 25 + Math.sin(time + i * 0.3) * 15;
+          const frequency = 0.005 + i * 0.001;
+          const x = waveX + Math.sin(y * frequency + time * 2.5 + i * 0.6) * amplitude;
+          
+          if (y === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+        
+        const hue = 230 + i * 10 + Math.sin(time * 1.5) * 15;
+        ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${waveOpacity})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      // Pulsos radiais sutis (mantidos)
+      const beatFrequency = 2.5;
+      const beatPhase = Math.sin(time * beatFrequency);
+      
+      if (beatPhase > 0.85) {
+        const pulseProgress = (beatPhase - 0.85) / 0.15;
+        const pulseRadius = 100 + pulseProgress * 400;
+        const pulseOpacity = Math.max(0, 0.3 - pulseProgress * 0.3);
+        
+        for (let ring = 0; ring < 2; ring++) {
+          const ringRadius = pulseRadius + ring * 80;
+          const ringHue = 250 - ring * 15;
+          
+          ctx.beginPath();
+          ctx.arc(canvas.width / 2, canvas.height / 2, ringRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = `hsla(${ringHue}, 100%, 70%, ${pulseOpacity * (1 - ring * 0.3)})`;
+          ctx.lineWidth = 2 - ring;
+          ctx.stroke();
+        }
+      }
 
       animationFrameId = requestAnimationFrame(animate);
     };
