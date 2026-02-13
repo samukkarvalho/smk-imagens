@@ -37,7 +37,7 @@ export default function Hero() {
             
             <img
               src="https://i.imgur.com/6WCx1VTm.jpg"
-              alt="Fotógrafo SMK em ação"
+              alt="Fotógrafo SMK em ação capturando momentos em evento"
               className="relative rounded-lg w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl"
               loading="eager"
               fetchPriority="high"
@@ -50,15 +50,15 @@ export default function Hero() {
         <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">500+</div>
+              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2" aria-label="500 projetos realizados">500+</div>
               <div className="text-sm md:text-base text-gray-400 font-sans">Projetos</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">100+</div>
+              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2" aria-label="100 clientes satisfeitos">100+</div>
               <div className="text-sm md:text-base text-gray-400 font-sans">Clientes Satisfeitos</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">5+</div>
+              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2" aria-label="5 anos de experiência">5+</div>
               <div className="text-sm md:text-base text-gray-400 font-sans">Anos de Experiência</div>
             </div>
           </div>
@@ -67,13 +67,13 @@ export default function Hero() {
 
       <a
         href="#portfolio"
-  className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-blue-400 hover:text-blue-300 transition-colors"
-  aria-label="Ir para portfólio"
->
-  <ArrowDown size={32} aria-hidden="true" />
-</a>
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-blue-400 hover:text-blue-300 transition-colors"
+        aria-label="Rolar para a seção de portfólio"
+      >
+        <ArrowDown size={32} aria-hidden="true" />
+      </a>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60 pointer-events-none" aria-hidden="true" />
     </section>
   );
 }

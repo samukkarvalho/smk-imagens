@@ -25,23 +25,24 @@ export default function Header() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-blue-500/20' : 'bg-transparent'
         }`}
+        role="banner"
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Espaço vazio - sem logo */}
             <div></div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-8" role="navigation" aria-label="Menu principal">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   className="text-gray-300 hover:text-cyan-400 font-semibold transition-all duration-300 relative group"
                   style={{ fontFamily: 'Arial, sans-serif' }}
+                  aria-label={`Ir para ${link.label}`}
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" aria-hidden="true" />
                 </a>
               ))}
             </nav>
@@ -50,8 +51,11 @@ export default function Header() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden text-white p-2 hover:text-cyan-400 transition-colors"
+              aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileMenuOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -59,11 +63,13 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
+        id="mobile-menu"
         className={`fixed inset-0 bg-black/95 backdrop-blur-lg z-40 md:hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
+        aria-hidden={!isMobileMenuOpen}
       >
-        <nav className="flex flex-col items-center justify-center h-full gap-8">
+        <nav className="flex flex-col items-center justify-center h-full gap-8" role="navigation" aria-label="Menu mobile">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -71,6 +77,7 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="text-3xl text-gray-300 hover:text-cyan-400 font-bold transition-colors"
               style={{ fontFamily: 'Impact, sans-serif' }}
+              aria-label={`Ir para ${link.label}`}
             >
               {link.label}
             </a>
