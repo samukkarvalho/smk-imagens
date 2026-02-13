@@ -10,15 +10,20 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="container relative z-10 text-center px-4 mx-auto">
-        <div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-bold text-white mb-6 leading-tight">
-            <span className="block">SMK</span>
-            <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-              IMAGENS
-            </span>
-          </h1>
+        
+        {/* LOGO FUTURISTA EM VEZ DO TEXTO */}
+        <div className="mb-8">
+          <img 
+            src="/smk-logo-complete.png" 
+            alt="SMK IMAGENS - Fotografia & Filmagem Profissional" 
+            className="mx-auto w-full max-w-2xl h-auto"
+            style={{ 
+              filter: 'drop-shadow(0 0 30px rgba(0, 200, 255, 0.8)) drop-shadow(0 0 60px rgba(0, 160, 255, 0.4))',
+              animation: 'pulse-glow 3s ease-in-out infinite'
+            }}
+          />
         </div>
 
         <div>
@@ -47,7 +52,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Tech Stats - SUBIDOS 1.5CM (6rem) - SEM BLUR */}
+        {/* Tech Stats - SUBIDOS 1.5CM (6rem) - COM BORDAS PULSANTES */}
         <div className={`transition-all duration-1000 delay-300 -mt-24 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 max-w-4xl mx-auto">
             
@@ -128,6 +133,18 @@ export default function Hero() {
       >
         <ArrowDown size={32} aria-hidden="true" />
       </a>
+
+      {/* CSS para animação da logo */}
+      <style jsx>{`
+        @keyframes pulse-glow {
+          0%, 100% {
+            filter: drop-shadow(0 0 30px rgba(0, 200, 255, 0.8)) drop-shadow(0 0 60px rgba(0, 160, 255, 0.4));
+          }
+          50% {
+            filter: drop-shadow(0 0 40px rgba(0, 220, 255, 1)) drop-shadow(0 0 80px rgba(0, 180, 255, 0.6));
+          }
+        }
+      `}</style>
     </section>
   );
 }

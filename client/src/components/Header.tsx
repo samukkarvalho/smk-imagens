@@ -1,110 +1,83 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { href: '#portfolio', label: 'Portfólio' },
-    { href: '#sobre', label: 'Sobre' },
-    { href: '#contato', label: 'Contatos' },
-  ];
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-blue-500/20' : 'bg-transparent'
-        }`}
-        role="banner"
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <div></div>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800/50">
+      <div className="container flex items-center justify-between py-3">
+        
+        {/* Logo SMK IMAGENS - 1cm das bordas */}
+        <a href="#" className="ml-4 mt-1">
+          <img 
+            src="/smk-logo-header.png" 
+            alt="SMK Imagens Logo" 
+            className="h-10 md:h-12 w-auto hover:scale-105 transition-transform duration-300"
+            style={{ filter: 'drop-shadow(0 0 15px rgba(0, 200, 255, 0.6))' }}
+          />
+        </a>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8" role="navigation" aria-label="Menu principal">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-300 hover:text-cyan-400 font-semibold transition-all duration-300 relative group"
-                  style={{ fontFamily: 'Arial, sans-serif' }}
-                  aria-label={`Ir para ${link.label}`}
-                >
-                  {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" aria-hidden="true" />
-                </a>
-              ))}
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white p-2 hover:text-cyan-400 transition-colors"
-              aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-            >
-              {isMobileMenuOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Menu */}
-      <div
-        id="mobile-menu"
-        className={`fixed inset-0 bg-black/95 backdrop-blur-lg z-40 md:hidden transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
-        aria-hidden={!isMobileMenuOpen}
-      >
-        <nav className="flex flex-col items-center justify-center h-full gap-8" role="navigation" aria-label="Menu mobile">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-3xl text-gray-300 hover:text-cyan-400 font-bold transition-colors"
-              style={{ fontFamily: 'Impact, sans-serif' }}
-              aria-label={`Ir para ${link.label}`}
-            >
-              {link.label}
-            </a>
-          ))}
+        {/* Navegação Desktop */}
+        <nav className="hidden md:flex items-center gap-8 mr-8">
+          <a
+            href="#portfolio"
+            className="text-white hover:text-blue-400 font-montserrat font-medium transition-colors"
+          >
+            Portfólio
+          </a>
+          <a
+            href="#sobre"
+            className="text-white hover:text-blue-400 font-montserrat font-medium transition-colors"
+          >
+            Sobre
+          </a>
+          <a
+            href="#contato"
+            className="text-white hover:text-blue-400 font-montserrat font-medium transition-colors"
+          >
+            Contatos
+          </a>
         </nav>
+
+        {/* Menu Mobile */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-white p-2 hover:text-cyan-400 transition-colors mr-4"
+          aria-label="Menu"
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
-      {/* CSS Animations */}
-      <style>{`
-        @keyframes logoGlow {
-          0%, 100% {
-            filter: drop-shadow(0 0 8px #00f3ff) brightness(1);
-          }
-          50% {
-            filter: drop-shadow(0 0 15px #ff00ff) brightness(1.3);
-          }
-        }
-        
-        @keyframes gradientShift {
-          0% {
-            background-position: 0% center;
-          }
-          100% {
-            background-position: 200% center;
-          }
-        }
-      `}</style>
-    </>
+      {/* Menu Mobile Dropdown */}
+      {isOpen && (
+        <div className="md:hidden bg-black/95 border-t border-gray-800">
+          <nav className="container py-4 flex flex-col gap-4">
+            <a
+              href="#portfolio"
+              onClick={() => setIsOpen(false)}
+              className="text-white hover:text-blue-400 font-montserrat font-medium transition-colors py-2"
+            >
+              Portfólio
+            </a>
+            <a
+              href="#sobre"
+              onClick={() => setIsOpen(false)}
+              className="text-white hover:text-blue-400 font-montserrat font-medium transition-colors py-2"
+            >
+              Sobre
+            </a>
+            <a
+              href="#contato"
+              onClick={() => setIsOpen(false)}
+              className="text-white hover:text-blue-400 font-montserrat font-medium transition-colors py-2"
+            >
+              Contatos
+            </a>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }
