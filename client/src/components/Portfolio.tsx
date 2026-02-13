@@ -189,7 +189,7 @@ export default function Portfolio() {
               <div
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className="bg-gray-900 rounded-lg overflow-hidden cursor-pointer hover:bg-gray-800 transition-all group border border-gray-800 hover:border-blue-500/50"
+                className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer hover:bg-gray-800/50 transition-all group"
               >
                 <div className="relative h-48 overflow-hidden">
                   {category.items[0].type === 'image' ? (
@@ -244,7 +244,7 @@ export default function Portfolio() {
                 ?.items.map((item) => (
                   <div
                     key={item.id}
-                    className="bg-gray-900 rounded-lg overflow-hidden group cursor-pointer border border-gray-800 hover:border-blue-500/50 transition-all"
+                    className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden group cursor-pointer transition-all"
                     onClick={() => item.type === 'image' && openLightbox(item.url)}
                   >
                     <div className="relative h-64 overflow-hidden">
