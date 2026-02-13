@@ -11,9 +11,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Conteúdo Principal */}
       <div className="container relative z-10 text-center px-4 mx-auto">
-        {/* Título Principal */}
         <div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-bold text-white mb-6 leading-tight">
             <span className="block">SMK</span>
@@ -23,7 +21,6 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Subtítulo */}
         <div>
           <p className="text-xl md:text-2xl lg:text-3xl font-sans text-gray-300 mb-4 max-w-3xl mx-auto">
             Fotografia & Filmagem Profissional
@@ -33,7 +30,6 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Foto do fotógrafo */}
         <div>
           <div className="relative inline-block mb-12">
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 rounded-lg blur-sm animate-pulse"></div>
@@ -50,7 +46,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Stats */}
         <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
             <div className="text-center">
@@ -69,15 +64,13 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Indicador de scroll */}
-      
+      <a
         href="#portfolio"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-blue-400 hover:text-blue-300 transition-colors"
       >
         <ArrowDown size={32} />
       </a>
 
-      {/* Gradiente de overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60 pointer-events-none" />
     </section>
   );
