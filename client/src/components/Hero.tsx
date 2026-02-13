@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(true); // MUDANÇA: Começa como true
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Força re-render para ativar animações
     const timer = setTimeout(() => setIsVisible(true), 50);
     return () => clearTimeout(timer);
   }, []);
@@ -14,7 +13,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Conteúdo Principal */}
       <div className="container relative z-10 text-center px-4 mx-auto">
-        {/* Título Principal - SEM animação inicial */}
+        {/* Título Principal */}
         <div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-montserrat font-bold text-white mb-6 leading-tight">
             <span className="block">SMK</span>
@@ -24,7 +23,7 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Subtítulo - SEM animação inicial */}
+        {/* Subtítulo */}
         <div>
           <p className="text-xl md:text-2xl lg:text-3xl font-sans text-gray-300 mb-4 max-w-3xl mx-auto">
             Fotografia & Filmagem Profissional
@@ -34,20 +33,17 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Foto do fotógrafo - VISÍVEL desde o início */}
+        {/* Foto do fotógrafo */}
         <div>
           <div className="relative inline-block mb-12">
-            {/* Moldura neon animada */}
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 rounded-lg blur-sm animate-pulse"></div>
             <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg"></div>
-
-            {/* Foto com loading otimizado */}
+            
             <img
               src="https://i.imgur.com/6WCx1VT.jpg"
               alt="Fotógrafo SMK em ação"
               className="relative rounded-lg w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl"
               loading="eager"
-              fetchpriority="high"
               width="320"
               height="320"
             />
@@ -55,35 +51,19 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div
-          className={`transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
+        <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">
-                500+
-              </div>
-              <div className="text-sm md:text-base text-gray-400 font-sans">
-                Projetos
-              </div>
+              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">500+</div>
+              <div className="text-sm md:text-base text-gray-400 font-sans">Projetos</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">
-                100+
-              </div>
-              <div className="text-sm md:text-base text-gray-400 font-sans">
-                Clientes Satisfeitos
-              </div>
+              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">100+</div>
+              <div className="text-sm md:text-base text-gray-400 font-sans">Clientes Satisfeitos</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">
-                5+
-              </div>
-              <div className="text-sm md:text-base text-gray-400 font-sans">
-                Anos de Experiência
-              </div>
+              <div className="text-3xl md:text-4xl font-montserrat font-bold text-blue-400 mb-2">5+</div>
+              <div className="text-sm md:text-base text-gray-400 font-sans">Anos de Experiência</div>
             </div>
           </div>
         </div>
