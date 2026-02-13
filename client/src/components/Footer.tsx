@@ -24,8 +24,8 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contato" className="bg-black border-t border-gray-800" role="contentinfo">
-      <div className="container py-16 md:py-20">
+    <footer id="contato" className="relative border-t border-gray-800/50" role="contentinfo">
+      <div className="container py-16 md:py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
             <h3 className="text-xl font-montserrat font-bold text-white mb-4">
@@ -87,7 +87,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 my-8" role="separator" aria-hidden="true"></div>
+        <div className="border-t border-gray-800/50 my-8" role="separator" aria-hidden="true"></div>
 
         <div className="flex flex-col items-center justify-center gap-3 text-center">
           <p className="text-gray-500 font-sans text-xs md:text-sm flex items-center gap-2 flex-wrap justify-center">

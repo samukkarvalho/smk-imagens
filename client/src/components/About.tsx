@@ -51,12 +51,8 @@ export default function About() {
     <section
       ref={sectionRef}
       id="sobre"
-      className="relative py-20 md:py-32 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden"
+      className="relative py-20 md:py-32 overflow-hidden"
     >
-      {/* Elementos decorativos de fundo */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-
       <div className="container relative z-10">
         {/* Título da seção */}
         <div
@@ -79,7 +75,7 @@ export default function About() {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className={`group relative bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6 hover:border-blue-500/50 transition-all duration-500 ${
+              className={`group relative bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}

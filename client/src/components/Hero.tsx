@@ -47,11 +47,11 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Tech Stats - SEM BORDAS E SOMBRAS */}
-        <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        {/* Tech Stats - SUBIDOS 1.5CM (6rem) */}
+        <div className={`transition-all duration-1000 delay-300 -mt-24 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 max-w-4xl mx-auto">
             
-            {/* Card 1 - Fotografia - SEM BORDAS */}
+            {/* Card 1 - Fotografia */}
             <div className="group relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
               <div className="relative bg-black/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300">
@@ -69,7 +69,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Card 2 - Festivais - SEM BORDAS */}
+            {/* Card 2 - Festivais */}
             <div className="group relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
               <div className="relative bg-black/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300">
@@ -87,7 +87,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Card 3 - Vídeo - SEM BORDAS */}
+            {/* Card 3 - Vídeo */}
             <div className="group relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
               <div className="relative bg-black/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300">
@@ -116,8 +116,6 @@ export default function Hero() {
       >
         <ArrowDown size={32} aria-hidden="true" />
       </a>
-
-      {/* REMOVIDO O GRADIENTE PRETO QUE CRIAVA A "LINHA" */}
     </section>
   );
 }
