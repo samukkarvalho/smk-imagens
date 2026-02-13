@@ -48,19 +48,20 @@ export default function Hero() {
 
         <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="grid grid-cols-3 gap-3 md:gap-6 mt-12 md:mt-20 max-w-5xl mx-auto pb-4">
+            
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
-              <div className="relative bg-black/90 backdrop-blur-sm rounded-lg p-3 md:p-6 border border-cyan-500/30 hover:border-cyan-400 transition-all duration-300">
+              <div className="relative bg-black/90 backdrop-blur-sm rounded-lg p-3 md:p-6 border border-cyan-500/30 hover:border-cyan-400 transition-all duration-300 flex flex-col items-center justify-center text-center">
                 <div className="flex items-center justify-center mb-2 md:mb-3">
                   <div className="p-2 md:p-3 bg-cyan-500/20 rounded-full">
                     <Camera size={20} className="md:hidden text-cyan-400" />
                     <Camera size={32} className="hidden md:block text-cyan-400" />
                   </div>
                 </div>
-                <div className="text-cyan-400 text-sm md:text-xl lg:text-2xl font-orbitron font-bold mb-1 md:mb-2 tracking-wider">
+                <div className="text-cyan-400 text-xs md:text-xl lg:text-2xl font-orbitron font-bold mb-1 md:mb-2 tracking-wider leading-tight">
                   ⚡ FOTOGRAFIA
                 </div>
-                <div className="text-gray-300 text-xs md:text-sm font-sans uppercase tracking-widest">
+                <div className="text-gray-300 text-[10px] md:text-sm font-sans uppercase tracking-widest">
                   Profissional
                 </div>
               </div>
@@ -68,17 +69,17 @@ export default function Hero() {
 
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
-              <div className="relative bg-black/90 backdrop-blur-sm rounded-lg p-3 md:p-6 border border-blue-500/30 hover:border-blue-400 transition-all duration-300">
+              <div className="relative bg-black/90 backdrop-blur-sm rounded-lg p-3 md:p-6 border border-blue-500/30 hover:border-blue-400 transition-all duration-300 flex flex-col items-center justify-center text-center">
                 <div className="flex items-center justify-center mb-2 md:mb-3">
                   <div className="p-2 md:p-3 bg-blue-500/20 rounded-full">
                     <Music size={20} className="md:hidden text-blue-400" />
                     <Music size={32} className="hidden md:block text-blue-400" />
                   </div>
                 </div>
-                <div className="text-blue-400 text-sm md:text-xl lg:text-2xl font-orbitron font-bold mb-1 md:mb-2 tracking-wider">
+                <div className="text-blue-400 text-xs md:text-xl lg:text-2xl font-orbitron font-bold mb-1 md:mb-2 tracking-wider leading-tight">
                   🌊 FESTIVAIS
                 </div>
-                <div className="text-gray-300 text-xs md:text-sm font-sans uppercase tracking-widest">
+                <div className="text-gray-300 text-[10px] md:text-sm font-sans uppercase tracking-widest">
                   Eletrônicos
                 </div>
               </div>
@@ -86,27 +87,28 @@ export default function Hero() {
 
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
-              <div className="relative bg-black/90 backdrop-blur-sm rounded-lg p-3 md:p-6 border border-purple-500/30 hover:border-purple-400 transition-all duration-300">
+              <div className="relative bg-black/90 backdrop-blur-sm rounded-lg p-3 md:p-6 border border-purple-500/30 hover:border-purple-400 transition-all duration-300 flex flex-col items-center justify-center text-center">
                 <div className="flex items-center justify-center mb-2 md:mb-3">
                   <div className="p-2 md:p-3 bg-purple-500/20 rounded-full">
                     <Video size={20} className="md:hidden text-purple-400" />
                     <Video size={32} className="hidden md:block text-purple-400" />
                   </div>
                 </div>
-                <div className="text-purple-400 text-sm md:text-xl lg:text-2xl font-orbitron font-bold mb-1 md:mb-2 tracking-wider">
+                <div className="text-purple-400 text-xs md:text-xl lg:text-2xl font-orbitron font-bold mb-1 md:mb-2 tracking-wider leading-tight">
                   🎥 VÍDEO 4K
                 </div>
-                <div className="text-gray-300 text-xs md:text-sm font-sans uppercase tracking-widest">
+                <div className="text-gray-300 text-[10px] md:text-sm font-sans uppercase tracking-widest">
                   Premium
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
-      <a href="#portfolio" className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-blue-400 hover:text-blue-300 transition-colors">
-        <ArrowDown size={32} />
+      <a href="#portfolio" className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-blue-400 hover:text-blue-300 transition-colors" aria-label="Rolar para portfólio">
+        <ArrowDown size={32} aria-hidden="true" />
       </a>
     </section>
   );
