@@ -7,13 +7,12 @@ export default function AnimatedBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
     let animationFrameId: number;
     let time = 0;
 
-    // Configuração do canvas
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -21,7 +20,6 @@ export default function AnimatedBackground() {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    // Mouse position para parallax
     let mouseX = canvas.width / 2;
     let mouseY = canvas.height / 2;
 
@@ -31,7 +29,7 @@ export default function AnimatedBackground() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // PARTÍCULAS FLUTUANTES (tipo estrelas/energia)
+    // PARTÍCULAS - REDUZIDO de 80 para 40
     interface Particle {
       x: number;
       y: number;
@@ -44,7 +42,7 @@ export default function AnimatedBackground() {
     }
 
     const particles: Particle[] = [];
-    const particleCount = 80;
+    const particleCount = 40; // REDUZIDO
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
@@ -53,44 +51,39 @@ export default function AnimatedBackground() {
         size: Math.random() * 3 + 1,
         speedX: (Math.random() - 0.5) * 0.5,
         speedY: (Math.random() - 0.5) * 0.5,
-        hue: Math.random() * 60 + 220, // Azul → Roxo (220-280)
+        hue: Math.random() * 60 + 220,
         opacity: Math.random() * 0.5 + 0.3,
         pulsePhase: Math.random() * Math.PI * 2
       });
     }
 
-    // Grid 3D
+    // Grid 3D - OTIMIZADO
     const gridSize = 60;
-    const gridDepth = 15;
+    const gridDepth = 12; // REDUZIDO de 15
     const perspective = 500;
 
-    // Animação principal
     const animate = () => {
       time += 0.015;
 
-      // ===== BACKGROUND GRADIENTE DINÂMICO =====
+      // Background gradiente
       const bgGradient = ctx.createRadialGradient(
-        canvas.width / 2, 
-        canvas.height / 2, 
-        0, 
-        canvas.width / 2, 
-        canvas.height / 2, 
-        canvas.width
+        canvas.width / 2, canvas.height / 2, 0,
+        canvas.width / 2, canvas.height / 2, canvas.width
       );
-      bgGradient.addColorStop(0, '#0a0015'); // Roxo muito escuro
-      bgGradient.addColorStop(0.4, '#000510'); // Azul escuro
-      bgGradient.addColorStop(1, '#000000'); // Preto
+      bgGradient.addColorStop(0, '#0a0015');
+      bgGradient.addColorStop(0.4, '#000510');
+      bgGradient.addColorStop(1, '#000000');
       ctx.fillStyle = bgGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // ===== GRID CYBERPUNK 3D =====
+      // Grid 3D - SEM SOMBRAS (grande economia)
       ctx.save();
       ctx.translate(canvas.width / 2, canvas.height * 0.75);
 
       const parallaxX = (mouseX - canvas.width / 2) * 0.03;
       const parallaxY = (mouseY - canvas.height / 2) * 0.015;
 
-      // Linhas horizontais (profundidade)
+      // Linhas horizontais
       for (let z = 0; z < gridDepth; z++) {
         const zPos = z * gridSize - (time * 60) % gridSize;
         const scale = perspective / (perspective + zPos);
@@ -99,28 +92,21 @@ export default function AnimatedBackground() {
           const y = zPos * scale + parallaxY;
           const width = canvas.width * scale * 1.2;
           const opacity = Math.max(0, Math.min(0.5, scale - 0.15));
-          
-          // Onda sutil
           const wave = Math.sin(time * 1.5 + z * 0.4) * 4;
-          
-          // Cor variando entre azul e roxo
           const colorMix = (z / gridDepth) + Math.sin(time * 0.5) * 0.3;
-          const hue = 220 + colorMix * 60; // 220 (azul) → 280 (roxo)
+          const hue = 220 + colorMix * 60;
           
           ctx.beginPath();
           ctx.moveTo(-width / 2 + parallaxX, y + wave);
           ctx.lineTo(width / 2 + parallaxX, y + wave);
           ctx.strokeStyle = `hsla(${hue}, 100%, 65%, ${opacity})`;
           ctx.lineWidth = scale * 2.5;
-          ctx.shadowBlur = 15;
-          ctx.shadowColor = `hsla(${hue}, 100%, 65%, ${opacity * 0.6})`;
-          ctx.stroke();
-          ctx.shadowBlur = 0;
+          ctx.stroke(); // SEM shadowBlur
         }
       }
 
-      // Linhas verticais
-      for (let x = -12; x <= 12; x++) {
+      // Linhas verticais - REDUZIDO
+      for (let x = -8; x <= 8; x += 2) { // MENOS LINHAS (era -12 a 12)
         ctx.beginPath();
         for (let z = 0; z < gridDepth; z++) {
           const zPos = z * gridSize - (time * 60) % gridSize;
@@ -142,47 +128,37 @@ export default function AnimatedBackground() {
         const hue = 240 + x * 3 + time * 10;
         ctx.strokeStyle = `hsla(${hue}, 100%, 60%, 0.25)`;
         ctx.lineWidth = 1.8;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = `hsla(${hue}, 100%, 60%, 0.4)`;
-        ctx.stroke();
-        ctx.shadowBlur = 0;
+        ctx.stroke(); // SEM shadowBlur
       }
 
       ctx.restore();
 
-      // ===== PARTÍCULAS FLUTUANTES =====
+      // Partículas - SEM SOMBRAS
       particles.forEach(p => {
-        // Movimento
         p.x += p.speedX;
         p.y += p.speedY;
         
-        // Wrap around
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
         
-        // Pulse
         const pulse = Math.sin(time * 2 + p.pulsePhase) * 0.3 + 0.7;
         
-        // Desenhar partícula
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * pulse, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${p.hue}, 100%, 70%, ${p.opacity * pulse})`;
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = `hsla(${p.hue}, 100%, 70%, ${p.opacity})`;
-        ctx.fill();
-        ctx.shadowBlur = 0;
+        ctx.fill(); // SEM shadowBlur
       });
 
-      // ===== ONDAS DE EQUALIZAÇÃO (DJ STYLE) =====
-      const waveCount = 6;
+      // Ondas - REDUZIDO de 6 para 3
+      const waveCount = 3;
       for (let i = 0; i < waveCount; i++) {
-        const waveY = canvas.height * (0.2 + i * 0.12) + Math.sin(time * 1.2 + i) * 40;
+        const waveY = canvas.height * (0.2 + i * 0.2) + Math.sin(time * 1.2 + i) * 40;
         const waveOpacity = 0.12 + Math.sin(time * 2.5 + i * 0.7) * 0.08;
         
         ctx.beginPath();
-        for (let x = 0; x < canvas.width; x += 4) {
+        for (let x = 0; x < canvas.width; x += 8) { // MENOS PONTOS (era 4)
           const amplitude = 25 + Math.sin(time + i * 0.5) * 15;
           const frequency = 0.008 + i * 0.002;
           const y = waveY + Math.sin(x * frequency + time * 3 + i * 0.8) * amplitude;
@@ -194,74 +170,21 @@ export default function AnimatedBackground() {
           }
         }
         
-        const hue = 220 + i * 10 + Math.sin(time) * 20;
+        const hue = 220 + i * 15 + Math.sin(time) * 20;
         ctx.strokeStyle = `hsla(${hue}, 100%, 65%, ${waveOpacity})`;
         ctx.lineWidth = 2.5;
-        ctx.shadowBlur = 25;
-        ctx.shadowColor = `hsla(${hue}, 100%, 65%, ${waveOpacity * 0.8})`;
-        ctx.stroke();
-        ctx.shadowBlur = 0;
+        ctx.stroke(); // SEM shadowBlur
       }
 
-      // ===== FEIXES DE LUZ CRUZADOS (LASER SHOW) =====
-      const beamCount = 4;
-      for (let i = 0; i < beamCount; i++) {
-        const beamX = ((time * 80 + i * 250) % (canvas.width + 300)) - 150;
-        const beamAngle = Math.sin(time * 0.7 + i) * 0.4;
-        
-        ctx.save();
-        ctx.translate(beamX, 0);
-        ctx.rotate(beamAngle);
-        
-        const beamHue = 230 + i * 15 + Math.sin(time * 2) * 20;
-        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-        gradient.addColorStop(0, `hsla(${beamHue}, 100%, 70%, 0)`);
-        gradient.addColorStop(0.3, `hsla(${beamHue}, 100%, 70%, ${0.08 + Math.sin(time * 3 + i) * 0.04})`);
-        gradient.addColorStop(0.7, `hsla(${beamHue}, 100%, 70%, ${0.08 + Math.sin(time * 3 + i) * 0.04})`);
-        gradient.addColorStop(1, `hsla(${beamHue}, 100%, 70%, 0)`);
-        
-        ctx.fillStyle = gradient;
-        ctx.fillRect(-3, 0, 6, canvas.height);
-        
-        ctx.restore();
-      }
-
-      // ===== PULSOS RADIAIS (BASS DROP EFFECT) =====
-      const beatFrequency = 2.5;
-      const beatPhase = Math.sin(time * beatFrequency);
-      
-      if (beatPhase > 0.85) {
-        const pulseProgress = (beatPhase - 0.85) / 0.15; // 0 a 1
-        const pulseRadius = 100 + pulseProgress * 400;
-        const pulseOpacity = Math.max(0, 0.4 - pulseProgress * 0.4);
-        
-        for (let ring = 0; ring < 3; ring++) {
-          const ringRadius = pulseRadius + ring * 80;
-          const ringHue = 250 - ring * 15;
-          
-          ctx.beginPath();
-          ctx.arc(canvas.width / 2, canvas.height / 2, ringRadius, 0, Math.PI * 2);
-          ctx.strokeStyle = `hsla(${ringHue}, 100%, 70%, ${pulseOpacity * (1 - ring * 0.3)})`;
-          ctx.lineWidth = 3 - ring;
-          ctx.shadowBlur = 40;
-          ctx.shadowColor = `hsla(${ringHue}, 100%, 70%, ${pulseOpacity})`;
-          ctx.stroke();
-          ctx.shadowBlur = 0;
-        }
-      }
-
-      // ===== SCANLINES SUTIS (CRT EFFECT) =====
-      for (let y = 0; y < canvas.height; y += 4) {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
-        ctx.fillRect(0, y, canvas.width, 1);
-      }
+      // REMOVIDO: Feixes de luz (economia significativa)
+      // REMOVIDO: Pulsos radiais (economia significativa)
+      // REMOVIDO: Scanlines (não adiciona muito valor)
 
       animationFrameId = requestAnimationFrame(animate);
     };
 
     animate();
 
-    // Cleanup
     return () => {
       window.removeEventListener('resize', setCanvasSize);
       window.removeEventListener('mousemove', handleMouseMove);
