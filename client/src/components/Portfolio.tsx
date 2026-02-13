@@ -147,12 +147,10 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="w-full py-20 relative">
       <div className="container">
-        {/* Título */}
         <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-white mb-12">
           Portfólio
         </h2>
 
-        {/* Botões para trocar entre Fotografia e Vídeos */}
         <div className="flex gap-4 mb-12">
           <button
             onClick={() => {
@@ -182,7 +180,6 @@ export default function Portfolio() {
           </button>
         </div>
 
-        {/* Mostrar categorias da seção selecionada */}
         {!selectedCategory ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentCategories.map((category) => (
@@ -206,8 +203,8 @@ export default function Portfolio() {
                       allowFullScreen
                     />
                   )}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all flex items-center justify-center">
-                    <span className="text-white font-montserrat font-bold text-center px-4">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-center justify-center">
+                    <span className="text-white font-montserrat font-bold text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity">
                       {category.items.length} {selectedType === 'fotografia' ? 'Fotos' : 'Vídeos'}
                     </span>
                   </div>
@@ -222,9 +219,7 @@ export default function Portfolio() {
             ))}
           </div>
         ) : (
-          /* Mostrar itens da categoria selecionada */
           <div>
-            {/* Botão voltar */}
             <button
               onClick={() => setSelectedCategory(null)}
               className="mb-6 px-4 py-2 bg-blue-500 text-white font-montserrat font-bold hover:bg-blue-600 transition-all flex items-center gap-2 rounded-lg"
@@ -232,12 +227,10 @@ export default function Portfolio() {
               ← Voltar
             </button>
 
-            {/* Título da categoria */}
             <h3 className="text-3xl font-montserrat font-bold text-white mb-8">
               {currentCategories.find(c => c.id === selectedCategory)?.name}
             </h3>
 
-            {/* Grid de imagens/vídeos */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {currentCategories
                 .find(c => c.id === selectedCategory)
@@ -255,8 +248,8 @@ export default function Portfolio() {
                             alt={item.title}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                           />
-                          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                            <span className="text-white font-montserrat text-lg">🔍 Ver Imagem</span>
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-center justify-center">
+                            <span className="text-white font-montserrat text-lg opacity-0 group-hover:opacity-100 transition-opacity">🔍 Ver Imagem</span>
                           </div>
                         </>
                       ) : (
@@ -275,13 +268,11 @@ export default function Portfolio() {
         )}
       </div>
 
-      {/* LIGHTBOX Modal */}
       {lightboxImage && (
         <div
           className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
           onClick={closeLightbox}
         >
-          {/* Botão Fechar */}
           <button
             onClick={closeLightbox}
             className="absolute top-4 right-4 text-white hover:text-blue-400 transition-colors p-2 bg-black/50 rounded-full hover:bg-black/70"
@@ -289,7 +280,6 @@ export default function Portfolio() {
             <X size={32} />
           </button>
 
-          {/* Imagem Maximizada */}
           <img
             src={lightboxImage}
             alt="Imagem ampliada"
