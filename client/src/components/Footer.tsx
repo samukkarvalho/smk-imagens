@@ -24,7 +24,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contato" className="relative border-t border-gray-800/50" role="contentinfo">
+    <footer id="contato" className="relative border-t border-gray-800/50 bg-black" role="contentinfo">
       <div className="container py-16 md:py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>

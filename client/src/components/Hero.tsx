@@ -53,7 +53,7 @@ export default function Hero() {
             
             {/* Card 1 - Fotografia */}
             <div className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative bg-black/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300">
                 <div className="flex items-center justify-center mb-3">
                   <div className="p-3 bg-cyan-500/20 rounded-full">
@@ -71,7 +71,7 @@ export default function Hero() {
 
             {/* Card 2 - Festivais */}
             <div className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative bg-black/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300">
                 <div className="flex items-center justify-center mb-3">
                   <div className="p-3 bg-blue-500/20 rounded-full">
@@ -89,7 +89,7 @@ export default function Hero() {
 
             {/* Card 3 - Vídeo */}
             <div className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg opacity-75 group-hover:opacity-100 blur transition duration-300"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative bg-black/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300">
                 <div className="flex items-center justify-center mb-3">
                   <div className="p-3 bg-purple-500/20 rounded-full">
