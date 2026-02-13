@@ -36,7 +36,7 @@ export default function Hero() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg"></div>
             
             <img
-              src="https://i.imgur.com/6WCx1VT.jpg"
+              src="https://i.imgur.com/6WCx1VTm.jpg"
               alt="Fotógrafo SMK em ação capturando momentos em evento"
               className="relative rounded-lg w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl"
               loading="eager"
@@ -49,7 +49,7 @@ export default function Hero() {
 
         {/* Tech Stats - MOBILE OTIMIZADO */}
         <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="grid grid-cols-3 gap-3 md:gap-6 mt-12 md:mt-20 max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-3 md:gap-6 mt-12 md:mt-20 max-w-5xl mx-auto">
             
             {/* Card 1 - Fotografia */}
             <div className="group relative">
