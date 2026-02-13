@@ -145,7 +145,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="w-full bg-black py-20 relative">
+    <section id="portfolio" className="w-full py-20 relative">
       <div className="container">
         {/* Título */}
         <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-white mb-12">
