@@ -36,7 +36,7 @@ export default function Hero() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg"></div>
             
             <img
-              src="https://i.imgur.com/6WCx1VTm.jpg"
+              src="https://i.imgur.com/6WCx1VT.jpg"
               alt="Fotógrafo SMK em ação capturando momentos em evento"
               className="relative rounded-lg w-64 h-64 md:w-80 md:h-80 object-cover shadow-2xl"
               loading="eager"
