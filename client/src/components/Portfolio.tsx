@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-// Dados dos projetos organizados por categoria
 const projectCategories = {
   fotografia: [
     {
@@ -117,12 +116,19 @@ const projectCategories = {
   ],
   videos: [
     {
-      id: 'eventos-eletronica',
-      name: 'Eventos de Eletrônica',
-      description: 'Cobertura de eventos de música eletrônica',
+      id: 'video-1',
+      name: 'Evento Eletrônica - Vídeo 1',
+      description: 'Cobertura de evento de música eletrônica',
       items: [
-        { id: 'v1', type: 'video', url: 'https://www.youtube.com/embed/Sy0KGukdVxM', title: 'Evento 1' },
-        { id: 'v2', type: 'video', url: 'https://www.youtube.com/embed/QL1B8MEJFHU', title: 'Evento 2' },
+        { id: 'v1', type: 'video', url: 'https://www.youtube.com/embed/Sy0KGukdVxM', title: 'Vídeo 1' },
+      ]
+    },
+    {
+      id: 'video-2',
+      name: 'Evento Eletrônica - Vídeo 2',
+      description: 'Cobertura de evento de música eletrônica',
+      items: [
+        { id: 'v2', type: 'video', url: 'https://www.youtube.com/embed/QL1B8MEJFHU', title: 'Vídeo 2' },
       ]
     },
   ]
@@ -181,7 +187,31 @@ export default function Portfolio() {
           </button>
         </div>
 
-        {!selectedCategory ? (
+        {selectedType === 'videos' ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {currentCategories.map((category) => (
+              <div
+                key={category.id}
+                className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden transition-all"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <iframe
+                    src={category.items[0].url}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-xl font-montserrat font-bold text-white mb-2">
+                    {category.name}
+                  </h3>
+                  <p className="text-gray-400 text-sm">{category.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : !selectedCategory ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentCategories.map((category) => (
               <div
@@ -190,23 +220,14 @@ export default function Portfolio() {
                 className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer hover:bg-gray-800/50 transition-all group"
               >
                 <div className="relative h-48 overflow-hidden">
-                  {category.items[0].type === 'image' ? (
-                    <img
-                      src={category.items[0].url}
-                      alt={category.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                    />
-                  ) : (
-                    <iframe
-                      src={category.items[0].url}
-                      className="w-full h-full object-cover pointer-events-none"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  )}
+                  <img
+                    src={category.items[0].url}
+                    alt={category.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                  />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-center justify-center">
                     <span className="text-white font-montserrat font-bold text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      {category.items.length} {selectedType === 'fotografia' ? 'Fotos' : 'Vídeos'}
+                      {category.items.length} Fotos
                     </span>
                   </div>
                 </div>
@@ -239,28 +260,17 @@ export default function Portfolio() {
                   <div
                     key={item.id}
                     className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden group cursor-pointer transition-all"
-                    onClick={() => item.type === 'image' && openLightbox(item.url)}
+                    onClick={() => openLightbox(item.url)}
                   >
                     <div className="relative h-64 overflow-hidden">
-                      {item.type === 'image' ? (
-                        <>
-                          <img
-                            src={item.url}
-                            alt={item.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-center justify-center">
-                            <span className="text-white font-montserrat text-lg opacity-0 group-hover:opacity-100 transition-opacity">🔍 Ver Imagem</span>
-                          </div>
-                        </>
-                      ) : (
-                        <iframe
-                          src={item.url}
-                          className="w-full h-full"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      )}
+                      <img
+                        src={item.url}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-center justify-center">
+                        <span className="text-white font-montserrat text-lg opacity-0 group-hover:opacity-100 transition-opacity">🔍 Ver Imagem</span>
+                      </div>
                     </div>
                   </div>
                 ))}
