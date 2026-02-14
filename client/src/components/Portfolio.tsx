@@ -121,7 +121,7 @@ const projectCategories = {
       name: 'Eventos de Eletrônica',
       description: 'Cobertura de eventos de música eletrônica',
       items: [
-        { id: 'v1', type: 'video', url: 'https://www.youtube.com/watch?v=Sy0KGukdVxM', title: 'Evento 1' },
+        { id: 'v1', type: 'video', url: 'https://www.youtube.com/embed/Sy0KGukdVxM', title: 'Evento 1' },
         { id: 'v2', type: 'video', url: 'https://www.youtube.com/embed/QL1B8MEJFHU', title: 'Evento 2' },
       ]
     },
