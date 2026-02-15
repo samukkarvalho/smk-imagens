@@ -5,7 +5,7 @@ const projectCategories = {
   fotografia: [
     {
       id: 'universo-paralello-2025',
-      name: 'Universo Paralello Teaser Party Portugal 2025',
+      name: 'Universo Paralello Portugal 2025',
       description: '',
       facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
