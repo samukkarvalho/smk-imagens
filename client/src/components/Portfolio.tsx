@@ -272,10 +272,10 @@ export default function Portfolio() {
                 <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg p-8 flex flex-col items-center justify-center text-center">
                   <Facebook size={48} className="text-white mb-4" />
                   <h3 className="text-xl font-montserrat font-bold text-white mb-3">
-                    Quer ver mais fotos?
+                    Quer ver o álbum completo?
                   </h3>
                   <p className="text-blue-100 mb-6 text-sm">
-                    Confira todos os álbuns no Facebook
+                    Confira na nossa Página do Facebook !
                   </p>
                   <a
                     href={currentCategory.facebookUrl}
