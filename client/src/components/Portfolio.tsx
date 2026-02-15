@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Facebook } from 'lucide-react';
 
 const projectCategories = {
   fotografia: [
@@ -7,6 +7,7 @@ const projectCategories = {
       id: 'universo-paralello-2025',
       name: 'Universo Paralello Teaser Party Portugal 2025',
       description: 'Cobertura fotográfica do evento UP',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
         { id: 'f1-1', type: 'image', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
         { id: 'f1-2', type: 'image', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 2' },
@@ -151,6 +152,8 @@ export default function Portfolio() {
     document.body.style.overflow = 'auto';
   };
 
+  const currentCategory = currentCategories.find(c => c.id === selectedCategory);
+
   return (
     <section id="portfolio" className="w-full py-20 relative">
       <div className="container">
@@ -242,30 +245,48 @@ export default function Portfolio() {
             </button>
 
             <h3 className="text-3xl font-montserrat font-bold text-white mb-8">
-              {currentCategories.find(c => c.id === selectedCategory)?.name}
+              {currentCategory?.name}
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {currentCategories
-                .find(c => c.id === selectedCategory)
-                ?.items.map((item) => (
-                  <div
-                    key={item.id}
-                    className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden group cursor-pointer transition-all"
-                    onClick={() => openLightbox(item.url)}
-                  >
-                    <div className="relative h-64 overflow-hidden">
-                      <img
-                        src={item.url}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-center justify-center">
-                        <span className="text-white font-montserrat text-lg opacity-0 group-hover:opacity-100 transition-opacity">🔍 Ver Imagem</span>
-                      </div>
+              {currentCategory?.items.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden group cursor-pointer transition-all"
+                  onClick={() => openLightbox(item.url)}
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={item.url}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-center justify-center">
+                      <span className="text-white font-montserrat text-lg opacity-0 group-hover:opacity-100 transition-opacity">🔍 Ver Imagem</span>
                     </div>
                   </div>
-                ))}
+                </div>
+              ))}
+
+              {currentCategory?.facebookUrl && (
+                <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg p-8 flex flex-col items-center justify-center text-center">
+                  <Facebook size={48} className="text-white mb-4" />
+                  <h3 className="text-xl font-montserrat font-bold text-white mb-3">
+                    Quer ver mais fotos?
+                  </h3>
+                  <p className="text-blue-100 mb-6 text-sm">
+                    Confira todos os álbuns no Facebook
+                  </p>
+                  <a
+                    href={currentCategory.facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all"
+                  >
+                    Abrir no Facebook
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         )}
