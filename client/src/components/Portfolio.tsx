@@ -35,6 +35,7 @@ const projectCategories = {
       id: 'music-day',
       name: 'Music Day 2021',
       description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
         { id: 'f2-1', type: 'image', url: 'https://i.imgur.com/0rkL9YG.jpg', title: 'Foto 1' },
         { id: 'f2-2', type: 'image', url: 'https://i.imgur.com/T73CIKG.jpg', title: 'Foto 2' },
@@ -67,6 +68,7 @@ const projectCategories = {
       id: 'shakti-festival-2019',
       name: 'Shakti Festival 2019',
       description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
         { id: 'f3-1', type: 'image', url: 'https://i.imgur.com/PQlI8Wb.jpg', title: 'Foto 1' },
         { id: 'f3-2', type: 'image', url: 'https://i.imgur.com/3eGv8mh.jpg', title: 'Foto 2' },
@@ -118,6 +120,7 @@ const projectCategories = {
       id: 'Atlântida Trance 2020',
       name: 'Atlântida Trance 2020',
       description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
         { id: 'f4-1', type: 'image', url: 'https://i.imgur.com/jkPaIJF.jpg', title: 'Foto 1' },
         { id: 'f4-2', type: 'image', url: 'https://i.imgur.com/HJUdVws.jpg', title: 'Foto 2' }, 
