@@ -136,7 +136,29 @@ const projectCategories = {
         { id: 'f4-12', type: 'image', url: 'https://i.imgur.com/cSNbOYs.jpg', title: 'Foto 12' }, 
         { id: 'f4-13', type: 'image', url: 'https://i.imgur.com/332AcsA.jpg', title: 'Foto 13' }, 
         ]
-    }, 
+    },
+    {
+      id: 'Solar Festival 2019',
+      name: 'Solar Festival 2019',
+      description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
+      items: [
+        { id: 'f5-1', url: 'https://i.imgur.com/IBOngDc.jpg'}, 
+        { id: 'f5-2', url: 'https://i.imgur.com/GOLhFB2.jpg'}, 
+        { id: 'f5-3', url: 'https://i.imgur.com/Uvw5zFt.jpg'}, 
+        { id: 'f5-4', url: 'https://i.imgur.com/LIYQ5ZF.jpg'}, 
+        { id: 'f5-5', url: 'https://i.imgur.com/466Lngk.jpg'}, 
+        { id: 'f5-6', url: 'https://i.imgur.com/MCL3HYg.jpg'}, 
+        { id: 'f5-7', url: 'https://i.imgur.com/D3v6yAM.jpg'}, 
+        { id: 'f5-8', url: 'https://i.imgur.com/VpTQFVO.jpg'}, 
+        { id: 'f5-9', url: 'https://i.imgur.com/TYe5e2d.jpg'}, 
+        { id: 'f5-10', url: 'https://i.imgur.com/urXWfde.jpg'}, 
+        { id: 'f5-11', url: 'https://i.imgur.com/0n92ga8.jpg'}, 
+        { id: 'f5-12', url: 'https://i.imgur.com/V5lYm9l.jpg'}, 
+        { id: 'f5-13', url: 'https://i.imgur.com/RtHJd2V.jpg'}, 
+        { id: 'f5-14', url: 'https://i.imgur.com/LjnMi9i.jpg'}, 
+         ]
+    },
   ],
   videos: [
     {
