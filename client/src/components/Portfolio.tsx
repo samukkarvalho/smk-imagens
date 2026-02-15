@@ -192,22 +192,14 @@ export default function Portfolio() {
             {currentCategories.map((category) => (
               <div
                 key={category.id}
-                className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden transition-all"
+                className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden"
               >
-                <div className="relative h-64 overflow-hidden">
-                  <iframe
-                    src={category.items[0].url}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-xl font-montserrat font-bold text-white mb-2">
-                    {category.name}
-                  </h3>
-                  <p className="text-gray-400 text-sm">{category.description}</p>
-                </div>
+                <iframe
+                  src={category.items[0].url}
+                  className="w-full h-64 md:h-80"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
             ))}
           </div>
