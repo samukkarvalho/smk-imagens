@@ -65,6 +65,27 @@ const projectCategories = {
       ]
     },
     {
+      id: 'Atlântida Trance 2020',
+      name: 'Atlântida Trance 2020',
+      description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
+      items: [
+        { id: 'f4-1', type: 'image', url: 'https://i.imgur.com/jkPaIJF.jpg', title: 'Foto 1' },
+        { id: 'f4-2', type: 'image', url: 'https://i.imgur.com/HJUdVws.jpg', title: 'Foto 2' }, 
+        { id: 'f4-3', type: 'image', url: 'https://i.imgur.com/Ksx5T3q.jpg', title: 'Foto 3' }, 
+        { id: 'f4-4', type: 'image', url: 'https://i.imgur.com/X6G3Tlm.jpg', title: 'Foto 4' }, 
+        { id: 'f4-5', type: 'image', url: 'https://i.imgur.com/g4JMLUS.jpg', title: 'Foto 5' }, 
+        { id: 'f4-6', type: 'image', url: 'https://i.imgur.com/baExWVq.jpg', title: 'Foto 6' }, 
+        { id: 'f4-7', type: 'image', url: 'https://i.imgur.com/e79TJon.jpg', title: 'Foto 7' }, 
+        { id: 'f4-8', type: 'image', url: 'https://i.imgur.com/4yfO2l5.jpg', title: 'Foto 8' }, 
+        { id: 'f4-9', type: 'image', url: 'https://i.imgur.com/DMIMrKA.jpg', title: 'Foto 9' }, 
+        { id: 'f4-10', type: 'image', url: 'https://i.imgur.com/0eG6tGk.jpg', title: 'Foto 10' }, 
+        { id: 'f4-11', type: 'image', url: 'https://i.imgur.com/JUAWgf3.jpg', title: 'Foto 11' }, 
+        { id: 'f4-12', type: 'image', url: 'https://i.imgur.com/cSNbOYs.jpg', title: 'Foto 12' }, 
+        { id: 'f4-13', type: 'image', url: 'https://i.imgur.com/332AcsA.jpg', title: 'Foto 13' }, 
+        ]
+    },
+    {
       id: 'shakti-festival-2019',
       name: 'Shakti Festival 2019',
       description: '',
@@ -115,27 +136,6 @@ const projectCategories = {
         { id: 'f3-43', type: 'image', url: 'https://i.imgur.com/VnAGN1L.jpg', title: 'Foto 43' },
         { id: 'f3-44', type: 'image', url: 'https://i.imgur.com/CWFYKf0.jpg', title: 'Foto 44' },
       ]
-    },
-    {
-      id: 'Atlântida Trance 2020',
-      name: 'Atlântida Trance 2020',
-      description: '',
-      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
-      items: [
-        { id: 'f4-1', type: 'image', url: 'https://i.imgur.com/jkPaIJF.jpg', title: 'Foto 1' },
-        { id: 'f4-2', type: 'image', url: 'https://i.imgur.com/HJUdVws.jpg', title: 'Foto 2' }, 
-        { id: 'f4-3', type: 'image', url: 'https://i.imgur.com/Ksx5T3q.jpg', title: 'Foto 3' }, 
-        { id: 'f4-4', type: 'image', url: 'https://i.imgur.com/X6G3Tlm.jpg', title: 'Foto 4' }, 
-        { id: 'f4-5', type: 'image', url: 'https://i.imgur.com/g4JMLUS.jpg', title: 'Foto 5' }, 
-        { id: 'f4-6', type: 'image', url: 'https://i.imgur.com/baExWVq.jpg', title: 'Foto 6' }, 
-        { id: 'f4-7', type: 'image', url: 'https://i.imgur.com/e79TJon.jpg', title: 'Foto 7' }, 
-        { id: 'f4-8', type: 'image', url: 'https://i.imgur.com/4yfO2l5.jpg', title: 'Foto 8' }, 
-        { id: 'f4-9', type: 'image', url: 'https://i.imgur.com/DMIMrKA.jpg', title: 'Foto 9' }, 
-        { id: 'f4-10', type: 'image', url: 'https://i.imgur.com/0eG6tGk.jpg', title: 'Foto 10' }, 
-        { id: 'f4-11', type: 'image', url: 'https://i.imgur.com/JUAWgf3.jpg', title: 'Foto 11' }, 
-        { id: 'f4-12', type: 'image', url: 'https://i.imgur.com/cSNbOYs.jpg', title: 'Foto 12' }, 
-        { id: 'f4-13', type: 'image', url: 'https://i.imgur.com/332AcsA.jpg', title: 'Foto 13' }, 
-        ]
     },
     {
       id: 'Solar Festival 2019',
