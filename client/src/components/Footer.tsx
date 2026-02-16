@@ -3,26 +3,6 @@ import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const handleInstagramClick = (e: React.MouseEvent) => {
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = 'instagram://user?username=samuelcarvalho.imagens';
-      setTimeout(() => {
-        window.open('https://www.instagram.com/samuelcarvalho.imagens/', '_blank');
-      }, 1000);
-    }
-  };
-
-  const handleFacebookClick = (e: React.MouseEvent) => {
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = 'fb://page/SamuelCarvalhoImagens';
-      setTimeout(() => {
-        window.open('https://www.facebook.com/SamuelCarvalhoImagens', '_blank');
-      }, 500);
-    }
-  };
-
   return (
     <footer id="contato" className="relative border-t border-gray-800/50 bg-black" role="contentinfo">
       <div className="container py-16 md:py-20 relative z-10">
@@ -41,11 +21,11 @@ export default function Footer() {
               Links Rápidos
             </h4>
             <div className="flex gap-4" role="group" aria-label="Redes sociais">
-              <a href="https://www.instagram.com/samuelcarvalho.imagens/" onClick={handleInstagramClick} target="_blank" rel="noopener noreferrer" aria-label="Visite nosso Instagram (abre em nova aba)" className="flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300">
+              <a href="https://instagram.com/samuelcarvalho.imagens" target="_blank" rel="noopener noreferrer" aria-label="Visite nosso Instagram (abre em nova aba)" className="flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300">
                 <Instagram size={20} aria-hidden="true" />
                 Instagram
               </a>
-              <a href="https://www.facebook.com/SamuelCarvalhoImagens" onClick={handleFacebookClick} target="_blank" rel="noopener noreferrer" aria-label="Visite nosso Facebook (abre em nova aba)" className="flex items-center gap-2 px-4 py-2 bg-[#1877F2] text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300">
+              <a href="https://www.facebook.com/SamuelCarvalhoImagens" target="_blank" rel="noopener noreferrer" aria-label="Visite nosso Facebook (abre em nova aba)" className="flex items-center gap-2 px-4 py-2 bg-[#1877F2] text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300">
                 <Facebook size={20} aria-hidden="true" />
                 Facebook
               </a>
