@@ -31,10 +31,18 @@ export default function Footer() {
                 Links Rápidos
               </h4>
               <div className="flex gap-4" role="group" aria-label="Redes sociais">
-                <button onClick={() => setShowInstagramModal(true)} className="flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300">
+                {/* Desktop: Link direto */}
+                <a href="https://www.instagram.com/smkimagens/" target="_blank" rel="noopener noreferrer" className="hidden md:flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300">
+                  <Instagram size={20} />
+                  Instagram
+                </a>
+                
+                {/* Mobile: Modal */}
+                <button onClick={() => setShowInstagramModal(true)} className="flex md:hidden items-center gap-2 px-4 py-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300">
                   <Instagram size={20} />
                   Instagram
                 </button>
+                
                 <a href="https://www.facebook.com/SamuelCarvalhoImagens" target="_blank" rel="noopener noreferrer" aria-label="Visite nosso Facebook (abre em nova aba)" className="flex items-center gap-2 px-4 py-2 bg-[#1877F2] text-white font-semibold rounded-lg hover:scale-105 transition-transform duration-300">
                   <Facebook size={20} aria-hidden="true" />
                   Facebook
@@ -83,45 +91,54 @@ export default function Footer() {
 
       {showInstagramModal && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setShowInstagramModal(false)}>
-          <div className="bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900 rounded-2xl p-8 max-w-md w-full relative" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-2xl p-8 max-w-md w-full relative border border-purple-500/30" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setShowInstagramModal(false)} className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors">
               <X size={24} />
             </button>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-full mb-6">
-                <Instagram size={40} className="text-white" />
+              <div className="mb-6">
+                <h2 className="text-4xl font-montserrat font-bold text-white mb-2">
+                  SMK
+                </h2>
+                <h3 className="text-2xl font-montserrat font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+                  IMAGENS
+                </h3>
               </div>
 
-              <h3 className="text-2xl font-montserrat font-bold text-white mb-2">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-full mb-4">
+                <Instagram size={32} className="text-white" />
+              </div>
+
+              <h4 className="text-xl font-montserrat font-bold text-white mb-2">
                 Siga no Instagram
-              </h3>
+              </h4>
               
-              <p className="text-gray-300 mb-6 text-sm">
-                Copie nosso @ e cole no Instagram para nos encontrar
+              <p className="text-gray-400 mb-6 text-sm">
+                Copie nosso @ e cole no Instagram
               </p>
 
-              <div className="bg-black/40 rounded-lg p-4 mb-4">
-                <p className="text-3xl font-bold text-white font-mono">
+              <div className="bg-black/60 rounded-xl p-6 mb-6 border border-cyan-500/30">
+                <p className="text-4xl font-bold text-cyan-400 font-mono">
                   @smkimagens
                 </p>
               </div>
 
-              <button onClick={handleCopyUsername} className="w-full py-3 bg-white text-purple-600 font-bold rounded-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+              <button onClick={handleCopyUsername} className="w-full py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white font-bold rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2 text-lg">
                 {copied ? (
                   <>
-                    <Check size={20} />
+                    <Check size={24} />
                     Copiado!
                   </>
                 ) : (
                   <>
-                    <Copy size={20} />
-                    Copiar @smkimagens
+                    <Copy size={24} />
+                    Copiar @
                   </>
                 )}
               </button>
 
-              <p className="text-gray-400 text-xs mt-4">
+              <p className="text-gray-500 text-xs mt-4">
                 Cole no Instagram para ir direto ao perfil
               </p>
             </div>
