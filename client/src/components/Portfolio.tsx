@@ -159,6 +159,23 @@ const projectCategories = {
         { id: 'f5-14', url: 'https://i.imgur.com/LjnMi9i.jpg'}, 
          ]
     },
+    {
+      id: 'Elementare 2019',
+      name: 'Elementare 2019',
+      description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
+      items: [
+        { id: 'f6-1', url: 'https://i.imgur.com/KG4ODir.jpg'}, 
+        { id: 'f6-2', url: 'https://i.imgur.com/MLtnWWJ.jpg'}, 
+        { id: 'f6-3', url: 'https://i.imgur.com/8tibVTJ.jpg'}, 
+        { id: 'f6-4', url: 'https://i.imgur.com/JlOxUpj.jpg'}, 
+        { id: 'f6-5', url: 'https://i.imgur.com/xBEEJAv.jpg'}, 
+        { id: 'f6-6', url: 'https://i.imgur.com/djOVnaV.jpg'}, 
+        { id: 'f6-7', url: 'https://i.imgur.com/UKTWvxH.jpg'}, 
+        { id: 'f6-8', url: 'https://i.imgur.com/Va0QTJ0.jpg'}, 
+        { id: 'f6-9', url: 'https://i.imgur.com/3cj6nUa.jpg'}, 
+         ]
+    },
   ],
   videos: [
     {
