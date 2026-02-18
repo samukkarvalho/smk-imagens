@@ -176,6 +176,26 @@ const projectCategories = {
         { id: 'f6-9', url: 'https://i.imgur.com/3cj6nUa.jpg'}, 
          ]
     },
+     {
+      id: 'Balikali 2018',
+      name: 'Balikali 2018',
+      description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
+      items: [
+        { id: 'f7-1', url: 'https://i.imgur.com/7qq4ko5.jpg'}, 
+        { id: 'f7-2', url: 'https://i.imgur.com/qma5Omk.jpg'}, 
+        { id: 'f7-3', url: 'https://i.imgur.com/AqrwDCy.jpg'}, 
+        { id: 'f7-4', url: 'https://i.imgur.com/J3cs6RR.jpg'}, 
+        { id: 'f7-5', url: 'https://i.imgur.com/Aj2lTdS.jpg'}, 
+        { id: 'f7-6', url: 'https://i.imgur.com/TqfRYbD.jpg'}, 
+        { id: 'f7-7', url: 'https://i.imgur.com/zpTaMQE.jpg'}, 
+        { id: 'f7-8', url: 'https://i.imgur.com/Mkcw0GP.jpg'}, 
+        { id: 'f7-9', url: 'https://i.imgur.com/CdIBTQg.jpg'}, 
+        { id: 'f7-10', url: 'https://i.imgur.com/mpzrnVO.jpg'}, 
+        { id: 'f7-11', url: 'https://i.imgur.com/bxWyuec.jpg'}, 
+        { id: 'f7-12', url: 'https://i.imgur.com/wmTjiIf.jpg'},  
+         ]
+    },
   ],
   videos: [
     {
