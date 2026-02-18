@@ -196,6 +196,26 @@ const projectCategories = {
         { id: 'f7-12', url: 'https://i.imgur.com/wmTjiIf.jpg'},  
          ]
     },
+    {
+      id: 'Low Sessions 2018',
+      name: 'Low Sessions 2018',
+      description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
+      items: [
+        { id: 'f7-1', url: 'https://i.imgur.com/YedVmup.jpg'}, 
+        { id: 'f7-2', url: 'https://i.imgur.com/aSmVMPJ.jpg'}, 
+        { id: 'f7-3', url: 'https://i.imgur.com/sz8qAXN.jpg'}, 
+        { id: 'f7-4', url: 'https://i.imgur.com/aS0hDOw.jpg'}, 
+        { id: 'f7-5', url: 'https://i.imgur.com/Y8mUNF7.jpg'}, 
+        { id: 'f7-6', url: 'https://i.imgur.com/JD03hgk.jpg'}, 
+        { id: 'f7-7', url: 'https://i.imgur.com/dtZKiZG.jpg'}, 
+        { id: 'f7-8', url: 'https://i.imgur.com/BDFJgDg.jpg'}, 
+        { id: 'f7-9', url: 'https://i.imgur.com/nIuJsK5.jpg'}, 
+        { id: 'f7-10', url: 'https://i.imgur.com/uLe43cI.jpg'}, 
+        { id: 'f7-11', url: 'https://i.imgur.com/J6zLdBg.jpg'}, 
+        { id: 'f7-12', url: 'https://i.imgur.com/Nx4LIqI.jpg'},  
+         ]
+    },
   ],
   videos: [
     {
