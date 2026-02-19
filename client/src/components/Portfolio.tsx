@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { X, Facebook } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { X, Facebook, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const projectCategories = {
   fotografia: [
@@ -9,26 +9,26 @@ const projectCategories = {
       description: '',
       facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
-        { id: 'f1-1', type: 'image', url: 'https://i.imgur.com/jHuZj8U.jpg', title: 'Foto 1' },
-        { id: 'f1-2', type: 'image', url: 'https://i.imgur.com/WlsE9L9.jpg', title: 'Foto 2' },
-        { id: 'f1-3', type: 'image', url: 'https://i.imgur.com/VZuvG1F.jpg', title: 'Foto 3' },
-        { id: 'f1-4', type: 'image', url: 'https://i.imgur.com/SOO30RG.jpg', title: 'Foto 4' },
-        { id: 'f1-5', type: 'image', url: 'https://i.imgur.com/kdnn4xY.jpg', title: 'Foto 5' },
-        { id: 'f1-6', type: 'image', url: 'https://i.imgur.com/uCl6svE.jpg', title: 'Foto 6' },
-        { id: 'f1-7', type: 'image', url: 'https://i.imgur.com/zOOXmUc.jpg', title: 'Foto 7' },
-        { id: 'f1-8', type: 'image', url: 'https://i.imgur.com/TNqvFJa.jpg', title: 'Foto 8' },
-        { id: 'f1-9', type: 'image', url: 'https://i.imgur.com/dBWPN6X.jpg', title: 'Foto 9' },
-        { id: 'f1-10', type: 'image', url: 'https://i.imgur.com/qEbGZyy.jpg', title: 'Foto 10' },
-        { id: 'f1-11', type: 'image', url: 'https://i.imgur.com/RffcgVa.jpg', title: 'Foto 11' },
-        { id: 'f1-12', type: 'image', url: 'https://i.imgur.com/ve3JFHj.jpg', title: 'Foto 12' },
-        { id: 'f1-13', type: 'image', url: 'https://i.imgur.com/NgYuo2F.jpg', title: 'Foto 13' },
-        { id: 'f1-14', type: 'image', url: 'https://i.imgur.com/aQXPalK.jpg', title: 'Foto 14' },
-        { id: 'f1-15', type: 'image', url: 'https://i.imgur.com/vRBgYHH.jpg', title: 'Foto 15' },
-        { id: 'f1-16', type: 'image', url: 'https://i.imgur.com/blV09FY.jpg', title: 'Foto 16' },
-        { id: 'f1-17', type: 'image', url: 'https://i.imgur.com/gpaRFO0.jpg', title: 'Foto 17' },
-        { id: 'f1-18', type: 'image', url: 'https://i.imgur.com/gtZnMmO.jpg', title: 'Foto 18' },
-        { id: 'f1-19', type: 'image', url: 'https://i.imgur.com/5X7UTGf.jpg', title: 'Foto 19' },
-        { id: 'f1-20', type: 'image', url: 'https://i.imgur.com/YYAJZRJ.jpg', title: 'Foto 20' },
+        { id: 'f1-1', url: 'https://i.imgur.com/jHuZj8U.jpg' },
+        { id: 'f1-2', url: 'https://i.imgur.com/WlsE9L9.jpg' },
+        { id: 'f1-3', url: 'https://i.imgur.com/VZuvG1F.jpg' },
+        { id: 'f1-4', url: 'https://i.imgur.com/SOO30RG.jpg' },
+        { id: 'f1-5', url: 'https://i.imgur.com/kdnn4xY.jpg' },
+        { id: 'f1-6', url: 'https://i.imgur.com/uCl6svE.jpg' },
+        { id: 'f1-7', url: 'https://i.imgur.com/zOOXmUc.jpg' },
+        { id: 'f1-8', url: 'https://i.imgur.com/TNqvFJa.jpg' },
+        { id: 'f1-9', url: 'https://i.imgur.com/dBWPN6X.jpg' },
+        { id: 'f1-10', url: 'https://i.imgur.com/qEbGZyy.jpg' },
+        { id: 'f1-11', url: 'https://i.imgur.com/RffcgVa.jpg' },
+        { id: 'f1-12', url: 'https://i.imgur.com/ve3JFHj.jpg' },
+        { id: 'f1-13', url: 'https://i.imgur.com/NgYuo2F.jpg' },
+        { id: 'f1-14', url: 'https://i.imgur.com/aQXPalK.jpg' },
+        { id: 'f1-15', url: 'https://i.imgur.com/vRBgYHH.jpg' },
+        { id: 'f1-16', url: 'https://i.imgur.com/blV09FY.jpg' },
+        { id: 'f1-17', url: 'https://i.imgur.com/gpaRFO0.jpg' },
+        { id: 'f1-18', url: 'https://i.imgur.com/gtZnMmO.jpg' },
+        { id: 'f1-19', url: 'https://i.imgur.com/5X7UTGf.jpg' },
+        { id: 'f1-20', url: 'https://i.imgur.com/YYAJZRJ.jpg' },
       ]
     },
     {
@@ -37,31 +37,31 @@ const projectCategories = {
       description: '',
       facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
-        { id: 'f2-1', type: 'image', url: 'https://i.imgur.com/0rkL9YG.jpg', title: 'Foto 1' },
-        { id: 'f2-2', type: 'image', url: 'https://i.imgur.com/T73CIKG.jpg', title: 'Foto 2' },
-        { id: 'f2-3', type: 'image', url: 'https://i.imgur.com/2Yu9OiM.jpg', title: 'Foto 3' },
-        { id: 'f2-4', type: 'image', url: 'https://i.imgur.com/ILdCiE7.jpg', title: 'Foto 4' },
-        { id: 'f2-5', type: 'image', url: 'https://i.imgur.com/LGx7BSY.jpg', title: 'Foto 5' },
-        { id: 'f2-6', type: 'image', url: 'https://i.imgur.com/qVOl8lM.jpg', title: 'Foto 6' },
-        { id: 'f2-7', type: 'image', url: 'https://i.imgur.com/TDmrrc9.jpg', title: 'Foto 7' },
-        { id: 'f2-8', type: 'image', url: 'https://i.imgur.com/xaJOfvU.jpg', title: 'Foto 8' },
-        { id: 'f2-9', type: 'image', url: 'https://i.imgur.com/Yvy4nmh.jpg', title: 'Foto 9' },
-        { id: 'f2-10', type: 'image', url: 'https://i.imgur.com/FOAi4k8.jpg', title: 'Foto 10' },
-        { id: 'f2-11', type: 'image', url: 'https://i.imgur.com/YcSsaY7.jpg', title: 'Foto 11' },
-        { id: 'f2-12', type: 'image', url: 'https://i.imgur.com/oHsbQe9.jpg', title: 'Foto 12' },
-        { id: 'f2-13', type: 'image', url: 'https://i.imgur.com/AfT6eoe.jpg', title: 'Foto 13' },
-        { id: 'f2-14', type: 'image', url: 'https://i.imgur.com/ZdMWypg.jpg', title: 'Foto 14' },
-        { id: 'f2-15', type: 'image', url: 'https://i.imgur.com/hLHGnEP.jpg', title: 'Foto 15' },
-        { id: 'f2-16', type: 'image', url: 'https://i.imgur.com/vLNgNEN.jpg', title: 'Foto 16' },
-        { id: 'f2-17', type: 'image', url: 'https://i.imgur.com/spbLGuF.jpg', title: 'Foto 17' },
-        { id: 'f2-18', type: 'image', url: 'https://i.imgur.com/w1nxnxO.jpg', title: 'Foto 18' },
-        { id: 'f2-19', type: 'image', url: 'https://i.imgur.com/eQY1eCe.jpg', title: 'Foto 19' },
-        { id: 'f2-20', type: 'image', url: 'https://i.imgur.com/63Nm9FT.jpg', title: 'Foto 20' },
-        { id: 'f2-21', type: 'image', url: 'https://i.imgur.com/ogkkEiA.jpg', title: 'Foto 21' },
-        { id: 'f2-22', type: 'image', url: 'https://i.imgur.com/8MDAEx0.jpg', title: 'Foto 22' },
-        { id: 'f2-23', type: 'image', url: 'https://i.imgur.com/MdbHvrt.jpg', title: 'Foto 23' },
-        { id: 'f2-24', type: 'image', url: 'https://i.imgur.com/PQI1bT6.jpg', title: 'Foto 24' },
-        { id: 'f2-25', type: 'image', url: 'https://i.imgur.com/nWXSazC.jpg', title: 'Foto 25' },
+        { id: 'f2-1', url: 'https://i.imgur.com/0rkL9YG.jpg' },
+        { id: 'f2-2', url: 'https://i.imgur.com/T73CIKG.jpg' },
+        { id: 'f2-3', url: 'https://i.imgur.com/2Yu9OiM.jpg' },
+        { id: 'f2-4', url: 'https://i.imgur.com/ILdCiE7.jpg' },
+        { id: 'f2-5', url: 'https://i.imgur.com/LGx7BSY.jpg' },
+        { id: 'f2-6', url: 'https://i.imgur.com/qVOl8lM.jpg' },
+        { id: 'f2-7', url: 'https://i.imgur.com/TDmrrc9.jpg' },
+        { id: 'f2-8', url: 'https://i.imgur.com/xaJOfvU.jpg' },
+        { id: 'f2-9', url: 'https://i.imgur.com/Yvy4nmh.jpg' },
+        { id: 'f2-10', url: 'https://i.imgur.com/FOAi4k8.jpg' },
+        { id: 'f2-11', url: 'https://i.imgur.com/YcSsaY7.jpg' },
+        { id: 'f2-12', url: 'https://i.imgur.com/oHsbQe9.jpg' },
+        { id: 'f2-13', url: 'https://i.imgur.com/AfT6eoe.jpg' },
+        { id: 'f2-14', url: 'https://i.imgur.com/ZdMWypg.jpg' },
+        { id: 'f2-15', url: 'https://i.imgur.com/hLHGnEP.jpg' },
+        { id: 'f2-16', url: 'https://i.imgur.com/vLNgNEN.jpg' },
+        { id: 'f2-17', url: 'https://i.imgur.com/spbLGuF.jpg' },
+        { id: 'f2-18', url: 'https://i.imgur.com/w1nxnxO.jpg' },
+        { id: 'f2-19', url: 'https://i.imgur.com/eQY1eCe.jpg' },
+        { id: 'f2-20', url: 'https://i.imgur.com/63Nm9FT.jpg' },
+        { id: 'f2-21', url: 'https://i.imgur.com/ogkkEiA.jpg' },
+        { id: 'f2-22', url: 'https://i.imgur.com/8MDAEx0.jpg' },
+        { id: 'f2-23', url: 'https://i.imgur.com/MdbHvrt.jpg' },
+        { id: 'f2-24', url: 'https://i.imgur.com/PQI1bT6.jpg' },
+        { id: 'f2-25', url: 'https://i.imgur.com/nWXSazC.jpg' },
       ]
     },
     {
@@ -70,20 +70,20 @@ const projectCategories = {
       description: '',
       facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
-        { id: 'f4-1', type: 'image', url: 'https://i.imgur.com/jkPaIJF.jpg', title: 'Foto 1' },
-        { id: 'f4-2', type: 'image', url: 'https://i.imgur.com/HJUdVws.jpg', title: 'Foto 2' }, 
-        { id: 'f4-3', type: 'image', url: 'https://i.imgur.com/Ksx5T3q.jpg', title: 'Foto 3' }, 
-        { id: 'f4-4', type: 'image', url: 'https://i.imgur.com/X6G3Tlm.jpg', title: 'Foto 4' }, 
-        { id: 'f4-5', type: 'image', url: 'https://i.imgur.com/g4JMLUS.jpg', title: 'Foto 5' }, 
-        { id: 'f4-6', type: 'image', url: 'https://i.imgur.com/baExWVq.jpg', title: 'Foto 6' }, 
-        { id: 'f4-7', type: 'image', url: 'https://i.imgur.com/e79TJon.jpg', title: 'Foto 7' }, 
-        { id: 'f4-8', type: 'image', url: 'https://i.imgur.com/4yfO2l5.jpg', title: 'Foto 8' }, 
-        { id: 'f4-9', type: 'image', url: 'https://i.imgur.com/DMIMrKA.jpg', title: 'Foto 9' }, 
-        { id: 'f4-10', type: 'image', url: 'https://i.imgur.com/0eG6tGk.jpg', title: 'Foto 10' }, 
-        { id: 'f4-11', type: 'image', url: 'https://i.imgur.com/JUAWgf3.jpg', title: 'Foto 11' }, 
-        { id: 'f4-12', type: 'image', url: 'https://i.imgur.com/cSNbOYs.jpg', title: 'Foto 12' }, 
-        { id: 'f4-13', type: 'image', url: 'https://i.imgur.com/332AcsA.jpg', title: 'Foto 13' }, 
-        ]
+        { id: 'f4-1', url: 'https://i.imgur.com/jkPaIJF.jpg' },
+        { id: 'f4-2', url: 'https://i.imgur.com/HJUdVws.jpg' }, 
+        { id: 'f4-3', url: 'https://i.imgur.com/Ksx5T3q.jpg' }, 
+        { id: 'f4-4', url: 'https://i.imgur.com/X6G3Tlm.jpg' }, 
+        { id: 'f4-5', url: 'https://i.imgur.com/g4JMLUS.jpg' }, 
+        { id: 'f4-6', url: 'https://i.imgur.com/baExWVq.jpg' }, 
+        { id: 'f4-7', url: 'https://i.imgur.com/e79TJon.jpg' }, 
+        { id: 'f4-8', url: 'https://i.imgur.com/4yfO2l5.jpg' }, 
+        { id: 'f4-9', url: 'https://i.imgur.com/DMIMrKA.jpg' }, 
+        { id: 'f4-10', url: 'https://i.imgur.com/0eG6tGk.jpg' }, 
+        { id: 'f4-11', url: 'https://i.imgur.com/JUAWgf3.jpg' }, 
+        { id: 'f4-12', url: 'https://i.imgur.com/cSNbOYs.jpg' }, 
+        { id: 'f4-13', url: 'https://i.imgur.com/332AcsA.jpg' }, 
+      ]
     },
     {
       id: 'shakti-festival-2019',
@@ -91,50 +91,50 @@ const projectCategories = {
       description: '',
       facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
-        { id: 'f3-1', type: 'image', url: 'https://i.imgur.com/PQlI8Wb.jpg', title: 'Foto 1' },
-        { id: 'f3-2', type: 'image', url: 'https://i.imgur.com/3eGv8mh.jpg', title: 'Foto 2' },
-        { id: 'f3-3', type: 'image', url: 'https://i.imgur.com/qxw2F9H.jpg', title: 'Foto 3' },
-        { id: 'f3-4', type: 'image', url: 'https://i.imgur.com/rjEcgbo.jpg', title: 'Foto 4' },
-        { id: 'f3-5', type: 'image', url: 'https://i.imgur.com/xdvw58u.jpg', title: 'Foto 5' },
-        { id: 'f3-6', type: 'image', url: 'https://i.imgur.com/oar1ItR.jpg', title: 'Foto 6' },
-        { id: 'f3-7', type: 'image', url: 'https://i.imgur.com/E98mWKX.jpg', title: 'Foto 7' },
-        { id: 'f3-8', type: 'image', url: 'https://i.imgur.com/fadPAiA.jpg', title: 'Foto 8' },
-        { id: 'f3-9', type: 'image', url: 'https://i.imgur.com/BWKsyAb.jpg', title: 'Foto 9' },
-        { id: 'f3-10', type: 'image', url: 'https://i.imgur.com/edYGQwS.jpg', title: 'Foto 10' },
-        { id: 'f3-11', type: 'image', url: 'https://i.imgur.com/D6v6udV.jpg', title: 'Foto 11' },
-        { id: 'f3-12', type: 'image', url: 'https://i.imgur.com/FbbGHqx.jpg', title: 'Foto 12' },
-        { id: 'f3-13', type: 'image', url: 'https://i.imgur.com/KvRmwv6.jpg', title: 'Foto 13' },
-        { id: 'f3-14', type: 'image', url: 'https://i.imgur.com/X7QMmiw.jpg', title: 'Foto 14' },
-        { id: 'f3-15', type: 'image', url: 'https://i.imgur.com/WxqNA0m.jpg', title: 'Foto 15' },
-        { id: 'f3-16', type: 'image', url: 'https://i.imgur.com/huOswQA.jpg', title: 'Foto 16' },
-        { id: 'f3-17', type: 'image', url: 'https://i.imgur.com/PjUv4Oe.jpg', title: 'Foto 17' },
-        { id: 'f3-18', type: 'image', url: 'https://i.imgur.com/O5BdpCJ.jpg', title: 'Foto 18' },
-        { id: 'f3-19', type: 'image', url: 'https://i.imgur.com/VVDUeBW.jpg', title: 'Foto 19' },
-        { id: 'f3-20', type: 'image', url: 'https://i.imgur.com/kaJJ9Fh.jpg', title: 'Foto 20' },
-        { id: 'f3-21', type: 'image', url: 'https://i.imgur.com/DesG61C.jpg', title: 'Foto 21' },
-        { id: 'f3-22', type: 'image', url: 'https://i.imgur.com/Qv8fL9a.jpg', title: 'Foto 22' },
-        { id: 'f3-23', type: 'image', url: 'https://i.imgur.com/zOysWjy.jpg', title: 'Foto 23' },
-        { id: 'f3-24', type: 'image', url: 'https://i.imgur.com/p6Q9dSK.jpg', title: 'Foto 24' },
-        { id: 'f3-25', type: 'image', url: 'https://i.imgur.com/gejDpsz.jpg', title: 'Foto 25' },
-        { id: 'f3-26', type: 'image', url: 'https://i.imgur.com/417b2cm.jpg', title: 'Foto 26' },
-        { id: 'f3-27', type: 'image', url: 'https://i.imgur.com/1pFMxOR.jpg', title: 'Foto 27' },
-        { id: 'f3-28', type: 'image', url: 'https://i.imgur.com/aE7fbg6.jpg', title: 'Foto 28' },
-        { id: 'f3-29', type: 'image', url: 'https://i.imgur.com/QeUZdAG.jpg', title: 'Foto 29' },
-        { id: 'f3-30', type: 'image', url: 'https://i.imgur.com/LCnVHzB.jpg', title: 'Foto 30' },
-        { id: 'f3-31', type: 'image', url: 'https://i.imgur.com/kVhyXPL.jpg', title: 'Foto 31' },
-        { id: 'f3-32', type: 'image', url: 'https://i.imgur.com/vLs1uTC.jpg', title: 'Foto 32' },
-        { id: 'f3-33', type: 'image', url: 'https://i.imgur.com/mzXNXq8.jpg', title: 'Foto 33' },
-        { id: 'f3-34', type: 'image', url: 'https://i.imgur.com/vm2kH9T.jpg', title: 'Foto 34' },
-        { id: 'f3-35', type: 'image', url: 'https://i.imgur.com/F33zlwK.jpg', title: 'Foto 35' },
-        { id: 'f3-36', type: 'image', url: 'https://i.imgur.com/6pIBqMF.jpg', title: 'Foto 36' },
-        { id: 'f3-37', type: 'image', url: 'https://i.imgur.com/ggyIe0T.jpg', title: 'Foto 37' },
-        { id: 'f3-38', type: 'image', url: 'https://i.imgur.com/onanJXc.jpg', title: 'Foto 38' },
-        { id: 'f3-39', type: 'image', url: 'https://i.imgur.com/ftx8Slg.jpg', title: 'Foto 39' },
-        { id: 'f3-40', type: 'image', url: 'https://i.imgur.com/WkLYevl.jpg', title: 'Foto 40' },
-        { id: 'f3-41', type: 'image', url: 'https://i.imgur.com/ClTNtK3.jpg', title: 'Foto 41' },
-        { id: 'f3-42', type: 'image', url: 'https://i.imgur.com/IAAo1cy.jpg', title: 'Foto 42' },
-        { id: 'f3-43', type: 'image', url: 'https://i.imgur.com/VnAGN1L.jpg', title: 'Foto 43' },
-        { id: 'f3-44', type: 'image', url: 'https://i.imgur.com/CWFYKf0.jpg', title: 'Foto 44' },
+        { id: 'f3-1', url: 'https://i.imgur.com/PQlI8Wb.jpg' },
+        { id: 'f3-2', url: 'https://i.imgur.com/3eGv8mh.jpg' },
+        { id: 'f3-3', url: 'https://i.imgur.com/qxw2F9H.jpg' },
+        { id: 'f3-4', url: 'https://i.imgur.com/rjEcgbo.jpg' },
+        { id: 'f3-5', url: 'https://i.imgur.com/xdvw58u.jpg' },
+        { id: 'f3-6', url: 'https://i.imgur.com/oar1ItR.jpg' },
+        { id: 'f3-7', url: 'https://i.imgur.com/E98mWKX.jpg' },
+        { id: 'f3-8', url: 'https://i.imgur.com/fadPAiA.jpg' },
+        { id: 'f3-9', url: 'https://i.imgur.com/BWKsyAb.jpg' },
+        { id: 'f3-10', url: 'https://i.imgur.com/edYGQwS.jpg' },
+        { id: 'f3-11', url: 'https://i.imgur.com/D6v6udV.jpg' },
+        { id: 'f3-12', url: 'https://i.imgur.com/FbbGHqx.jpg' },
+        { id: 'f3-13', url: 'https://i.imgur.com/KvRmwv6.jpg' },
+        { id: 'f3-14', url: 'https://i.imgur.com/X7QMmiw.jpg' },
+        { id: 'f3-15', url: 'https://i.imgur.com/WxqNA0m.jpg' },
+        { id: 'f3-16', url: 'https://i.imgur.com/huOswQA.jpg' },
+        { id: 'f3-17', url: 'https://i.imgur.com/PjUv4Oe.jpg' },
+        { id: 'f3-18', url: 'https://i.imgur.com/O5BdpCJ.jpg' },
+        { id: 'f3-19', url: 'https://i.imgur.com/VVDUeBW.jpg' },
+        { id: 'f3-20', url: 'https://i.imgur.com/kaJJ9Fh.jpg' },
+        { id: 'f3-21', url: 'https://i.imgur.com/DesG61C.jpg' },
+        { id: 'f3-22', url: 'https://i.imgur.com/Qv8fL9a.jpg' },
+        { id: 'f3-23', url: 'https://i.imgur.com/zOysWjy.jpg' },
+        { id: 'f3-24', url: 'https://i.imgur.com/p6Q9dSK.jpg' },
+        { id: 'f3-25', url: 'https://i.imgur.com/gejDpsz.jpg' },
+        { id: 'f3-26', url: 'https://i.imgur.com/417b2cm.jpg' },
+        { id: 'f3-27', url: 'https://i.imgur.com/1pFMxOR.jpg' },
+        { id: 'f3-28', url: 'https://i.imgur.com/aE7fbg6.jpg' },
+        { id: 'f3-29', url: 'https://i.imgur.com/QeUZdAG.jpg' },
+        { id: 'f3-30', url: 'https://i.imgur.com/LCnVHzB.jpg' },
+        { id: 'f3-31', url: 'https://i.imgur.com/kVhyXPL.jpg' },
+        { id: 'f3-32', url: 'https://i.imgur.com/vLs1uTC.jpg' },
+        { id: 'f3-33', url: 'https://i.imgur.com/mzXNXq8.jpg' },
+        { id: 'f3-34', url: 'https://i.imgur.com/vm2kH9T.jpg' },
+        { id: 'f3-35', url: 'https://i.imgur.com/F33zlwK.jpg' },
+        { id: 'f3-36', url: 'https://i.imgur.com/6pIBqMF.jpg' },
+        { id: 'f3-37', url: 'https://i.imgur.com/ggyIe0T.jpg' },
+        { id: 'f3-38', url: 'https://i.imgur.com/onanJXc.jpg' },
+        { id: 'f3-39', url: 'https://i.imgur.com/ftx8Slg.jpg' },
+        { id: 'f3-40', url: 'https://i.imgur.com/WkLYevl.jpg' },
+        { id: 'f3-41', url: 'https://i.imgur.com/ClTNtK3.jpg' },
+        { id: 'f3-42', url: 'https://i.imgur.com/IAAo1cy.jpg' },
+        { id: 'f3-43', url: 'https://i.imgur.com/VnAGN1L.jpg' },
+        { id: 'f3-44', url: 'https://i.imgur.com/CWFYKf0.jpg' },
       ]
     },
     {
@@ -157,7 +157,7 @@ const projectCategories = {
         { id: 'f5-12', url: 'https://i.imgur.com/V5lYm9l.jpg'}, 
         { id: 'f5-13', url: 'https://i.imgur.com/RtHJd2V.jpg'}, 
         { id: 'f5-14', url: 'https://i.imgur.com/LjnMi9i.jpg'}, 
-         ]
+      ]
     },
     {
       id: 'Elementare 2019',
@@ -174,9 +174,9 @@ const projectCategories = {
         { id: 'f6-7', url: 'https://i.imgur.com/UKTWvxH.jpg'}, 
         { id: 'f6-8', url: 'https://i.imgur.com/Va0QTJ0.jpg'}, 
         { id: 'f6-9', url: 'https://i.imgur.com/3cj6nUa.jpg'}, 
-         ]
+      ]
     },
-     {
+    {
       id: 'Balikali 2018',
       name: 'Balikali 2018',
       description: '',
@@ -194,7 +194,7 @@ const projectCategories = {
         { id: 'f7-10', url: 'https://i.imgur.com/mpzrnVO.jpg'}, 
         { id: 'f7-11', url: 'https://i.imgur.com/bxWyuec.jpg'}, 
         { id: 'f7-12', url: 'https://i.imgur.com/wmTjiIf.jpg'},  
-         ]
+      ]
     },
     {
       id: 'Low Sessions 2018',
@@ -202,19 +202,19 @@ const projectCategories = {
       description: '',
       facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
       items: [
-        { id: 'f7-1', url: 'https://i.imgur.com/YedVmup.jpg'}, 
-        { id: 'f7-2', url: 'https://i.imgur.com/aSmVMPJ.jpg'}, 
-        { id: 'f7-3', url: 'https://i.imgur.com/sz8qAXN.jpg'}, 
-        { id: 'f7-4', url: 'https://i.imgur.com/aS0hDOw.jpg'}, 
-        { id: 'f7-5', url: 'https://i.imgur.com/Y8mUNF7.jpg'}, 
-        { id: 'f7-6', url: 'https://i.imgur.com/JD03hgk.jpg'}, 
-        { id: 'f7-7', url: 'https://i.imgur.com/dtZKiZG.jpg'}, 
-        { id: 'f7-8', url: 'https://i.imgur.com/BDFJgDg.jpg'}, 
-        { id: 'f7-9', url: 'https://i.imgur.com/nIuJsK5.jpg'}, 
-        { id: 'f7-10', url: 'https://i.imgur.com/uLe43cI.jpg'}, 
-        { id: 'f7-11', url: 'https://i.imgur.com/J6zLdBg.jpg'}, 
-        { id: 'f7-12', url: 'https://i.imgur.com/Nx4LIqI.jpg'},  
-         ]
+        { id: 'f8-1', url: 'https://i.imgur.com/YedVmup.jpg'}, 
+        { id: 'f8-2', url: 'https://i.imgur.com/aSmVMPJ.jpg'}, 
+        { id: 'f8-3', url: 'https://i.imgur.com/sz8qAXN.jpg'}, 
+        { id: 'f8-4', url: 'https://i.imgur.com/aS0hDOw.jpg'}, 
+        { id: 'f8-5', url: 'https://i.imgur.com/Y8mUNF7.jpg'}, 
+        { id: 'f8-6', url: 'https://i.imgur.com/JD03hgk.jpg'}, 
+        { id: 'f8-7', url: 'https://i.imgur.com/dtZKiZG.jpg'}, 
+        { id: 'f8-8', url: 'https://i.imgur.com/BDFJgDg.jpg'}, 
+        { id: 'f8-9', url: 'https://i.imgur.com/nIuJsK5.jpg'}, 
+        { id: 'f8-10', url: 'https://i.imgur.com/uLe43cI.jpg'}, 
+        { id: 'f8-11', url: 'https://i.imgur.com/J6zLdBg.jpg'}, 
+        { id: 'f8-12', url: 'https://i.imgur.com/Nx4LIqI.jpg'},  
+      ]
     },
   ],
   videos: [
@@ -223,7 +223,7 @@ const projectCategories = {
       name: 'Evento Eletrônica - Vídeo 1',
       description: 'Cobertura de evento de música eletrônica',
       items: [
-        { id: 'v1', type: 'video', url: 'https://www.youtube.com/embed/Sy0KGukdVxM', title: 'Vídeo 1' },
+        { id: 'v1', type: 'video', url: 'https://www.youtube.com/embed/Sy0KGukdVxM' },
       ]
     },
     {
@@ -231,7 +231,7 @@ const projectCategories = {
       name: 'Evento Eletrônica - Vídeo 2',
       description: 'Cobertura de evento de música eletrônica',
       items: [
-        { id: 'v2', type: 'video', url: 'https://www.youtube.com/embed/QL1B8MEJFHU', title: 'Vídeo 2' },
+        { id: 'v2', type: 'video', url: 'https://www.youtube.com/embed/QL1B8MEJFHU' },
       ]
     },
   ]
@@ -240,21 +240,45 @@ const projectCategories = {
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedType, setSelectedType] = useState('fotografia');
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const currentCategories = projectCategories[selectedType];
+  const currentCategory = currentCategories.find(c => c.id === selectedCategory);
+  const currentImages = currentCategory?.items || [];
 
-  const openLightbox = (imageUrl: string) => {
-    setLightboxImage(imageUrl);
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
-    setLightboxImage(null);
+    setLightboxIndex(null);
     document.body.style.overflow = 'auto';
   };
 
-  const currentCategory = currentCategories.find(c => c.id === selectedCategory);
+  const nextImage = () => {
+    if (lightboxIndex !== null && currentImages.length > 0) {
+      setLightboxIndex((lightboxIndex + 1) % currentImages.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (lightboxIndex !== null && currentImages.length > 0) {
+      setLightboxIndex((lightboxIndex - 1 + currentImages.length) % currentImages.length);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxIndex === null) return;
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'Escape') closeLightbox();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex, currentImages.length]);
 
   return (
     <section id="portfolio" className="w-full py-20 relative">
@@ -332,7 +356,6 @@ export default function Portfolio() {
                   <h3 className="text-xl font-montserrat font-bold text-white mb-2">
                     {category.name}
                   </h3>
-                  <p className="text-gray-400 text-sm">{category.description}</p>
                 </div>
               </div>
             ))}
@@ -351,16 +374,16 @@ export default function Portfolio() {
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {currentCategory?.items.map((item) => (
+              {currentCategory?.items.map((item, index) => (
                 <div
                   key={item.id}
                   className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden group cursor-pointer transition-all"
-                  onClick={() => openLightbox(item.url)}
+                  onClick={() => openLightbox(index)}
                 >
                   <div className="relative h-64 overflow-hidden">
                     <img
                       src={item.url}
-                      alt={item.title}
+                      alt={`Foto ${index + 1}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all flex items-center justify-center">
@@ -394,24 +417,25 @@ export default function Portfolio() {
         )}
       </div>
 
-      {lightboxImage && (
-        <div
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
-          onClick={closeLightbox}
-        >
-          <button
-            onClick={closeLightbox}
-            className="absolute top-4 right-4 text-white hover:text-blue-400 transition-colors p-2 bg-black/50 rounded-full hover:bg-black/70"
-          >
+      {lightboxIndex !== null && currentImages[lightboxIndex] && (
+        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4" onClick={closeLightbox}>
+          <button onClick={closeLightbox} className="absolute top-4 right-4 z-10 text-white hover:text-blue-400 transition-colors p-2 bg-black/50 rounded-full hover:bg-black/70">
             <X size={32} />
           </button>
 
-          <img
-            src={lightboxImage}
-            alt="Imagem ampliada"
-            className="max-w-full max-h-full object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <button onClick={(e) => { e.stopPropagation(); prevImage(); }} className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white hover:text-blue-400 transition-colors p-3 bg-black/50 rounded-full hover:bg-black/70">
+            <ChevronLeft size={40} />
+          </button>
+
+          <button onClick={(e) => { e.stopPropagation(); nextImage(); }} className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white hover:text-blue-400 transition-colors p-3 bg-black/50 rounded-full hover:bg-black/70">
+            <ChevronRight size={40} />
+          </button>
+
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-black/50 px-4 py-2 rounded-full text-sm">
+            {lightboxIndex + 1} / {currentImages.length}
+          </div>
+
+          <img src={currentImages[lightboxIndex].url} alt="Imagem ampliada" className="max-w-full max-h-full object-contain" onClick={(e) => e.stopPropagation()} />
         </div>
       )}
     </section>
