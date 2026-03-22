@@ -216,6 +216,19 @@ const projectCategories = {
         { id: 'f8-12', url: 'https://i.imgur.com/Nx4LIqI.jpg'},  
       ]
     },
+    {
+      id: 'Ensaios Fotográficos',
+      name: 'Ensaios Fotográficos',
+      description: '',
+      facebookUrl: 'https://www.facebook.com/SamuelCarvalhoImagens',
+      items: [
+        { id: 'f8-1', url: 'https://i.imgur.com/JMVFD83.jpg'}, 
+        { id: 'f8-2', url: 'https://i.imgur.com/xCekcqu.jpg'}, 
+        { id: 'f8-3', url: 'https://i.imgur.com/swTH1HU.jpg'}, 
+        { id: 'f8-4', url: 'https://i.imgur.com/JF2ZkjF.jpg'}, 
+        { id: 'f8-5', url: 'https://i.imgur.com/9DK4C98.jpg'}, 
+      ]
+    },
   ],
   videos: [
     {
